@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webview - Paket Umroh</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles if needed, but Tailwind should cover most */
+        body {
+            font-family: 'Poppins', sans-serif; /* Fallback for a cleaner look */
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Gradient for bottom nav */
+        .bottom-nav-gradient {
+            background-image: linear-gradient(to right, #bd292d, #a32327); /* Red gradient */
+        }
+        /* Custom gradient for seat habis */
+        .seat-habis-gradient {
+            background-image: linear-gradient(to right, #ef4444, #dc2626); /* Red gradient */
+        }
+        /* Hide scrollbar for cleaner look, but allow scrolling */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="relative max-w-lg mx-auto bg-white shadow-lg overflow-hidden min-h-screen">
+
+        <!-- Top Header (Fixed) -->
+        <div class="fixed top-0 left-0 right-0 max-w-lg mx-auto bg-white shadow z-10 p-4 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-gray-800">Umroh Markeplace</h1>
+            <button class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Main Content Area (Scrollable) -->
+        <section id="homeSection" class="page-content pt-20 pb-20 px-4"> <!-- Adjusted padding for fixed header and bottom nav -->
+            <!-- Logo & Description Section -->
+            <div class="text-center mb-6">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhPuzMKZN3KsmwAjNG669XiEk0IVykABfk2CCt7cOBkcM1U6hMVPqRMau5LKhWWf9MKqgHArIUFJfbcV4KZHuM8UoiQqR7LPBftw34tAHJKfsA6ds3IN_8vHmsl1G1KGQLOeb7OIN_U02GaTuaJG19PnOmJERSA4GJQX1AQDLQvooH61iuaXng269QmxlY" alt="Bank Jambi" class="w-1/4 mb-2 mx-auto">
+                <p class="text-sm text-gray-600 leading-tight">
+                    Produk dan Jasa yang tersedia merupakan tanggung jawab dari <a href="#" class="text-[#bd292d] font-medium">umrohajj.id</a>.
+                    bila terjadi kendala pada pemesanan dan transaksi silahkan menghubungi
+                </p>
+                <div class="flex justify-center items-center mt-4 space-x-2">
+                    <button class="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs flex items-center">
+                        <i class="fas fa-headset mr-1"></i> Customer Service umrohajj.id
+                    </button>
+                    <span class="text-yellow-600 font-bold text-lg">0800 8585 000</span>
+                </div>
+            </div>
+
+        
+
+            <p class="text-center text-sm text-gray-500 mb-4">Tersedia 182 Paket</p>
+
+            <!-- UMROH MULTAZAM CARD -->
+            <div onclick="showPage('productDetailSection')" class="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-lg font-bold text-gray-800">Umroh Multazam 1447 H 9 Hari</h3>
+                    <span class="bg-green-100 text-green-800 text-xs px-6 py-1 rounded-full font-medium whitespace-nowrap">9 Hari</span>
+                </div>
+                
+                <!-- Layout Baru: Gambar Kiri, Fasilitas Kanan -->
+                <div class="flex space-x-4 mb-4">
+                    
+                    <!-- Kiri: Gambar Placeholder Square -->
+                    <div class="w-32 h-32 sm:w-32 sm:h-32 flex-shrink-0">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh9SWCLUenIVK23el4g_1A_XJsEVG0Hd91Kj1DKJHu2LKEg5DerInpMvypH-3jsQU3LKqA_FcfeuV0-dVEY834aH0eY2U-KXMVwxYio8lIvwprcvj7pfI0saWTqfCeu3tIORUpMEVMycG8U3nvYUzsced39W6R3bADW6ZaYYfllasJNJdvDCp0JrypKmn8" 
+                             alt="Paket Umroh" 
+                             class="w-full h-full object-cover rounded-lg border border-gray-200">
+                    </div>
+
+                    <!-- Kanan: Info Travel & Fasilitas -->
+                    <div class="flex-grow">
+                        <!-- Info Travel & Tanggal -->
+                        <p class="text-sm font-semibold text-gray-700">Muhandis Wisata</p>
+                        <p class="text-xs text-gray-500 mb-2">22 Nov 2025 - 30 Nov 2025</p>
+
+                        <!-- Daftar Fasilitas (Icon) -->
+                        <div class="space-y-1 text-xs text-gray-600">
+                            <div class="flex items-center">
+                                <i class="fas fa-plane-departure w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Saudi Airlines</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-plane-arrival w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Saudi Airlines</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-hotel w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Al Massa Grand</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-hotel w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Grand Plaza</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-dashed border-gray-200">
+                    <span class="seat-habis-gradient text-white text-xs px-3 py-1 rounded-full font-bold">Seat Habis</span>
+                    <div>
+                        <p class="text-xs text-gray-500 mb-0.5">Mulai dari</p>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[#bd292d] font-bold text-xl">IDR 31.000.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UMROH SIGNATURE CARD -->
+            <div class="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-lg font-bold text-gray-800">Umroh Signature 9 Hari</h3>
+                    <span class="bg-green-100 text-green-800 text-xs px-6 py-1 rounded-full font-medium whitespace-nowrap">9 Hari</span>
+                </div>
+                
+                <!-- Layout Baru: Gambar Kiri, Fasilitas Kanan -->
+                <div class="flex space-x-4 mb-4">
+                    
+                    <!-- Kiri: Gambar Placeholder Square -->
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjKd5xTA53O8s6ekb4EGh39aSWWpp01Cf-OEqfhBuo7oLquqhiAcMZBgIJ-FaelrtgPyQQfp2mr_ugRsGI7auiqQo2e4M_XSpLeAh6oFy5YxULUXJGnne0-y7QfMlWfA4m754NH6z6qAGHANC1_7Ym1u9pETsfezj-43F6LS9Typ8GFKD09xUu2eg4p7v4" 
+                             alt="Paket Umroh" 
+                             class="w-full h-full object-cover rounded-lg border border-gray-200">
+                    </div>
+
+                    <!-- Kanan: Info Travel & Fasilitas -->
+                    <div class="flex-grow">
+                        <!-- Info Travel & Tanggal -->
+                        <p class="text-sm font-semibold text-gray-700">Baba Ali Travel</p>
+                        <p class="text-xs text-gray-500 mb-2">22 Nov 2025 - 30 Nov 2025</p>
+
+                        <!-- Daftar Fasilitas (Icon) -->
+                        <div class="space-y-1 text-xs text-gray-600">
+                            <div class="flex items-center">
+                                <i class="fas fa-plane-departure w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Qatar Airlines</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-plane-arrival w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Qatar Airlines</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-hotel w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Fairmont</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-hotel w-4 text-center mr-2 text-gray-400"></i>
+                                <span>Sofitel ex Shahd Al Madinah</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-dashed border-gray-200">
+                    <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full font-bold">Tersedia</span>
+                    <div>
+                        <p class="text-xs text-gray-500 mb-0.5">Mulai dari</p>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[#bd292d] font-bold text-xl">IDR 33.500.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add more cards as needed -->
+        </section> <!-- Penutup untuk #homeSection -->
+
+        <!-- Search Filter Section -->
+        <section id="searchSection" class="page-content pt-20 pb-20 px-4 hidden">
+            <div class="max-w-sm mx-auto">
+                <!-- Header Halaman Filter -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Cari Paket</h2>
+                    <!-- Tombol untuk kembali ke halaman utama -->
+                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
+                        <i class="fas fa-times mr-1"></i> Tutup
+                    </button>
+                </div>
+                
+                <!-- Form Filter -->
+                <div class="space-y-6">
+                    
+                    <!-- Filter 1: Rentang Harga -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Rentang Harga</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d] focus:border-transparent bg-white">
+                            <option value="">Pilih Harga</option>
+                            <option value="1">20.000.000 - 30.000.000</option>
+                            <option value="2">30.000.000 - 40.000.000</option>
+                            <option value="3">40.000.000 - 50.000.000</option>
+                            <option value="4">Lebih dari 50.000.000</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filter 2: Bulan Keberangkatan -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Bulan Keberangkatan</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d] focus:border-transparent bg-white">
+                            <option value="">Pilih Bulan</option>
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter 3: Embarkasi (Keberangkatan) -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Embarkasi</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d] focus:border-transparent bg-white">
+                            <option value="">Pilih Embarkasi</option>
+                            <option value="1">Jakarta - CGK</option>
+                            <option value="2">Medan - KNO</option>
+                            <option value="3">Surabaya - SUB</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter 4: Lokasi Travel -->
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi Travel</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d] focus:border-transparent bg-white">
+                            <option value="">Pilih Lokasi</option>
+                            <option value="1">Jakarta</option>
+                            <option value="2">Medan</option>
+                            <option value="3">Surabaya</option>
+                            <option value="3">Bandung</option>
+                        </select>
+                    </div>
+
+                    <!-- Tombol Terapkan Filter -->
+                    <button class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
+                        Cari Sekarang
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section id="productDetailSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman Detail -->
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">Detail Paket</h2>
+                    <!-- Tombol untuk kembali ke halaman utama -->
+                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
+                        <i class="fas fa-times mr-1"></i> Tutup
+                    </button>
+                </div>
+
+                <!-- Konten Detail Paket -->
+                <div class="space-y-6">
+
+                    <!-- Judul & Gambar -->
+                    <div>
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh9SWCLUenIVK23el4g_1A_XJsEVG0Hd91Kj1DKJHu2LKEg5DerInpMvypH-3jsQU3LKqA_FcfeuV0-dVEY834aH0eY2U-KXMVwxYio8lIvwprcvj7pfI0saWTqfCeu3tIORUpMEVMycG8U3nvYUzsced39W6R3bADW6ZaYYfllasJNJdvDCp0JrypKmn8" 
+                             alt="Paket Umroh Multazam" 
+                             class="w-full h-48 object-cover rounded-lg border border-gray-200 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Umroh Multazam 1447 H 9 Hari</h3>
+                        <p class="text-sm font-semibold text-gray-700">Muhandis Wisata</p>
+                    </div>
+
+                    <!-- Pilih Kantor Layanan -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Pilih Kantor Layanan</label>
+                        <!-- Mengganti div.space-y-2 dengan elemen select -->
+                        <select name="kantor_layanan" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d] focus:border-transparent bg-white">
+                            <option value="">Pilih Kantor Layanan</okup>
+                            <option value="jakarta">Jakarta</option>
+                            <option value="bandung">Bandung</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                    </div>
+
+                    <!-- Pilih Kamar -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Pilih Kamar</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center justify-between p-4 border border-gray-300 rounded-lg has-[:checked]:bg-red-50 has-[:checked]:border-[#bd292d]">
+                                <div class="flex items-center">
+                                    <input type="radio" name="kamar" class="w-5 h-5 text-[#bd292d] focus:ring-[#bd292d]">
+                                    <span class="ml-3 font-medium text-gray-700">Double (Sekamar Berdua)</span>
+                                </div>
+                                <span class="font-bold text-[#bd292d]">IDR 35.000.000</span>
+                            </label>
+                            <label class="flex items-center justify-between p-4 border border-gray-300 rounded-lg has-[:checked]:bg-red-50 has-[:checked]:border-[#bd292d]">
+                                <div class="flex items-center">
+                                    <input type="radio" name="kamar" class="w-5 h-5 text-[#bd292d] focus:ring-[#bd292d]">
+                                    <span class="ml-3 font-medium text-gray-700">Triple (Sekamar Bertiga)</span>
+                                </div>
+                                <span class="font-bold text-[#bd292d]">IDR 33.000.000</span>
+                            </label>
+                            <label class="flex items-center justify-between p-4 border border-gray-300 rounded-lg has-[:checked]:bg-red-50 has-[:checked]:border-[#bd292d]">
+                                <div class="flex items-center">
+                                    <input type="radio" name="kamar" class="w-5 h-5 text-[#bd292d] focus:ring-[#bd292d]">
+                                    <span class="ml-3 font-medium text-gray-700">Quad (Sekamar Berempat)</span>
+                                </div>
+                                <span class="font-bold text-[#bd292d]">IDR 31.000.000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Info Fasilitas -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Fasilitas</label>
+                        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-2 text-gray-700">
+                            <p><i class="fas fa-plane-departure w-5 mr-2 text-gray-500"></i> Saudi Airlines (Keberangkatan)</p>
+                            <p><i class="fas fa-plane-arrival w-5 mr-2 text-gray-500"></i> Saudi Airlines (Kepulangan)</p>
+                            <p><i class="fas fa-hotel w-5 mr-2 text-gray-500"></i> Al Massa Grand (Hotel Mekkah)</p>
+                            <p><i class="fas fa-hotel w-5 mr-2 text-gray-500"></i> Grand Plaza (Hotel Madinah)</p>
+                            <p><i class="fas fa-bus w-5 mr-2 text-gray-500"></i> Bus AC Selama di Arab Saudi</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fasilitas Tambahan -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Fasilitas Tambahan</label>
+                        <p class="text-sm text-gray-600 p-4 bg-gray-50 rounded-lg border">
+                            Termasuk lounge bandara, manasik umroh di hotel bintang 5, dan air zam-zam 5 liter.
+                        </p>
+                    </div>
+
+                    <!-- Harga Termasuk & Tidak Termasuk (Combined Card) -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                        <!-- Bagian Harga Termasuk -->
+                        <div>
+                            <label class="block text-lg font-semibold text-gray-700 mb-1">Harga Termasuk</label>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 p-4">
+                                <li>Tiket Pesawat PP</li>
+                                <li>Visa Umroh & Asuransi</li>
+                                <li>Hotel & Akomodasi</li>
+                                <li>Makan 3x Sehari</li>
+                                <li>Transportasi Bus AC</li>
+                            </ul>
+                        </div>
+                        <!-- Bagian Harga Tidak Termasuk -->
+                        <div>
+                            <label class="block text-lg font-semibold text-gray-700 mb-1">Harga Tidak Termasuk</label>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 p-4">
+                                <li>Pembuatan Paspor</li>
+                                <li>Vaksin Meningitis</li>
+                                <li>Kelebihan Bagasi</li>
+                                <li>Pengeluaran Pribadi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Travel Mitra -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Travel Mitra</label>
+                        <!-- Modifikasi div ini untuk menggunakan flex -->
+                        <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200 text-sm">
+                            <!-- Kiri: Logo -->
+                            <div class="flex-shrink-0">
+                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgrvjA2n82yfF2OO9AqRpP_f6AAMkMLXJm9AiNqFe8ECdOR5pgfe2C-8fBFIe2Z3GuEsiI22fJhXncUmr5QBmgblKcpHaBR9MSDB7bHRB-f3to6eQ2Mu7aeyCLoGgTtcmB-nm8GTD9Sz-9u2u4RV4AY2vUJR1Cj-XTvGxrmc1-RDc03muQfsOhjwvI4UZ8" 
+                                     alt="Logo Travel Mitra"
+                                     class="w-16 h-16 object-contain rounded-lg">
+                            </div>
+                            <!-- Kanan: Info Teks -->
+                            <div class="flex-grow">
+                                <p class="font-bold text-gray-800">Muhandis Wisata</p>
+                                <p class="text-gray-600">PPIU: 123/ABC/2021</p>
+                                <p class="text-gray-600">PIHK: 456/DEF/2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Syarat dan Ketentuan -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Syarat & Ketentuan</label>
+                        <p class="text-xs text-gray-500 p-4 bg-gray-50 rounded-lg border h-24 overflow-y-auto">
+                            1. Harga dapat berubah sewaktu-waktu.<br>
+                            2. Pembayaran DP minimal 50%...<br>
+                            3. Paspor berlaku minimal 8 bulan sebelum keberangkatan.<br>
+                            4. Pembayaran pelunasan maksimal 30 hari sebelum keberangkatan berlaku untuk semua paket.<br>
+                            5. Pendaftaran yang dilakukan 30 hari sebelum keberangkatan harus langsung dibayar lunas.<br>
+                            6. Mengumpulkan data/berkas pendukung sebagai berikut :<br>
+                            7. Paspor berlaku minimal 8 bulan sebelum keberangkatan.<br>
+                            8. Jika atas keinginan sendiri jamaah membatalkan keberangkatan Umroh maka jamaah bersedia untuk :<br>
+                            9. Penolakan Visa seluruhnya atas wewenang kedutaan negara masing-masing.<br>
+                            10. Bagi Jamaah yang sudah menentukan kamar, apabila kamar tidak tersedia, maka akan dipindahkan ke kamar yang setaraf.
+                        </p>
+                    </div>
+
+                    <!-- Itinerary -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Itinerary</label>
+                        <div class="space-y-2 text-sm">
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 1:</span> Berangkat dari Jakarta menuju Madinah.</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 2:</span> Ziarah di Madinah (Makam Rasulullah SAW, Raudhah).</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 3:</span> City tour Madinah.</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 4:</span> Perjalanan ke Mekkah, ambil Miqat, laksanakan Umroh pertama.</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 5-7:</span> Ibadah di Masjidil Haram & City tour Mekkah.</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 8:</span> Tawaf Wada, perjalanan ke Jeddah.</p>
+                            <p class="p-3 bg-gray-50 rounded-lg border"><span class="font-bold">Hari 9:</span> Tiba kembali di Jakarta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Detail Section -->
+        <section id="bookingSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Detail Pemesanan</h2>
+                    <!-- Tombol untuk kembali ke halaman detail produk -->
+                    <button onclick="showPage('productDetailSection')" class="text-[#bd292d] font-medium text-lg">
+                        <i class="fas fa-times mr-1"></i> Tutup
+                    </button>
+                </div>
+                
+                <!-- Konten Halaman Pemesanan -->
+                <div class="space-y-6">
+                    
+                    <!-- 1. Info Paket -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Paket yang Dipesan</label>
+                        <div class="space-y-2 text-sm">
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span id="bookingNamaPaket" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span id="bookingNamaTravel" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Kantor</span>: <span id="bookingKantorLayanan" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Kamar</span>: <span id="bookingJenisKamar" class="font-semibold text-gray-800"></span></p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Jumlah Jamaah -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Jumlah Jamaah</label>
+                        <div class="flex items-center justify-between p-4 border border-gray-300 rounded-lg">
+                            <span class="font-medium text-gray-700">Total Jamaah</span>
+                            <div class="flex items-center space-x-4">
+                                <button id="jamaahMinusBtn" onclick="updateJamaahCount(-1)" class="w-8 h-8 bg-gray-200 rounded-full text-lg font-bold text-gray-700 hover:bg-gray-300">-</button>
+                                <span id="jamaahCountDisplay" class="text-xl font-bold text-gray-900 w-8 text-center">1</span>
+                                <button id="jamaahPlusBtn" onclick="updateJamaahCount(1)" class="w-8 h-8 bg-[#bd292d] rounded-full text-lg font-bold text-white hover:bg-[#a32327]">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Total Pembayaran -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Total Pembayaran</label>
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center">
+                            <p class="text-sm text-blue-800">Jumlah yang harus dibayar</p>
+                            <p id="bookingTotalPrice" class="text-3xl font-bold text-blue-900 mt-1">IDR 0</p>
+                            <p id="bookingDiscountDisplay" class="text-sm font-medium text-green-600 mt-1 hidden">
+                        </div>
+                    </div>
+
+                    <!-- 4. Info Pembeli -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Info Pembeli</label>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                                <input type="text" id="buyerName" placeholder="Nama sesuai KTP" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nomor HP (WhatsApp)</label>
+                                <input type="tel" id="buyerPhone" placeholder="Contoh: 08123456789" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="buyerEmail" placeholder="email@anda.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Kode Referal (Opsional)</label>
+                                <input type="text" id="buyerReferal" oninput="updateTotalPrice()" placeholder="Masukkan kode referal" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                            <!-- Checkbox "Tambahkan sebagai jamaah" -->
+                            <div class="flex items-center">
+                                <input type="checkbox" id="buyerAsJamaah" onchange="toggleBuyerAsJamaah()" class="w-5 h-5 text-[#bd292d] rounded focus:ring-[#bd292d]">
+                                <label for="buyerAsJamaah" class="ml-2 block text-sm font-medium text-gray-700">Tambahkan sebagai jamaah</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. Detail Jamaah -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Detail Jamaah</label>
+                        <!-- Container untuk field jamaah dinamis -->
+                        <div id="jamaahFieldsContainer" class="space-y-4">
+                            <!-- Field jamaah akan ditambahkan oleh JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Detail Section -->
+        <section id="paymentSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Detail Pembayaran</h2>
+                    <!-- Tombol untuk kembali ke halaman booking -->
+                    <button onclick="showPage('bookingSection')" class="text-[#bd292d] font-medium text-lg">
+                        <i class="fas fa-arrow-left mr-1"></i> Kembali
+                    </button>
+                </div>
+                
+                <!-- Konten Halaman Pembayaran -->
+                <div class="space-y-6">
+                    
+                    <!-- 1. Kode Booking -->
+                    <div class="text-center bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <p class="text-sm font-medium text-gray-500">KODE BOOKING</p>
+                        <p id="paymentKodeBooking" class="text-3xl font-bold text-blue-600 tracking-wider">DTTNEYIET3</p>
+                    </div>
+
+                    <!-- 2. Info Pemesan -->
+                    <div class_id="paymentInfoPemesan" class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-sm">
+                        <div class="flex justify-between py-1">
+                            <span class="text-gray-500">Nama Pemesan</span>
+                            <span id="paymentNama" class="font-semibold text-gray-800 text-right"></span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-gray-500">Kontak Telepon</span>
+                            <span id="paymentTelepon" class="font-semibold text-gray-800 text-right"></span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-gray-500">Email</span>
+                            <span id="paymentEmail" class="font-semibold text-gray-800 text-right"></span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-gray-500">Jumlah Pax</span>
+                            <span id="paymentJumlahPax" class="font-semibold text-gray-800 text-right"></span>
+                        </div>
+                         <div class="flex justify-between py-1">
+                            <span class="text-gray-500">Nomor Invoice</span>
+                            <span id="paymentNomorInvoice" class="font-semibold text-gray-800 text-right"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. Info Pembayaran -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <div>
+                                <p class="text-gray-500 text-sm">Nomor Virtual Account</p>
+                                <p id="paymentVA" class="text-xl font-bold text-[#bd292d]">6060491762239551</p>
+                            </div>
+                            <button onclick="copyToClipboard('6060491762239551')" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">Copy</button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500 text-sm">Pembayaran</p>
+                                <p id="paymentTotal" class="text-xl font-bold text-[#bd292d]">IDR 12,125,000</p>
+                            </div>
+                            <button onclick="copyToClipboard('12125000')" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">Copy</button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Total Tagihan -->
+                    <div class="text-center mt-4">
+                        <p class="text-sm text-gray-600"><i class="fas fa-info-circle mr-1"></i> Total Tagihan: <span id="paymentTotalTagihan" class="font-bold">IDR 48,500,000</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Riwayat Bayar Section -->
+        <section id="riwayatSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Riwayat Bayar</h2>
+                    <!-- Tombol untuk kembali ke halaman utama -->
+                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
+                        <i class="fas fa-times mr-1"></i> Tutup
+                    </button>
+                </div>
+                
+                <!-- 1. Kotak Pencarian Kode Booking -->
+                <div id="bookingSearchBox" class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
+                    <label for="bookingCodeInput" class="block text-lg font-semibold text-gray-700 mb-3">Lacak Pesanan</label>
+                    <p class="text-sm text-gray-500 mb-3">Masukkan Kode Booking untuk melihat detail pesanan dan riwayat pembayaran Anda.</p>
+                    <div class="flex space-x-2">
+                        <input type="text" id="bookingCodeInput" placeholder="Masukkan Kode Booking (Contoh: DTTNEYIET3)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                        <button onclick="findBooking()" class="bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold px-4 py-2 rounded-lg shadow-lg hover:opacity-90">
+                            Cari
+                        </button>
+                    </div>
+                    <!-- Pesan Error (disembunyikan) -->
+                    <p id="bookingNotFound" class="text-sm text-red-600 mt-2 hidden">Kode booking tidak ditemukan.</p>
+                </div>
+
+                <!-- 2. Hasil Pencarian (disembunyikan) -->
+                <div id="bookingSearchResult" class="hidden space-y-6">
+                    
+                    <!-- Card Detail Paket & Status -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-lg font-semibold text-gray-700">Detail Pesanan</h3>
+                            <!-- Status Pembayaran -->
+                            <span id="bookingPaymentStatus" class="px-3 py-1 rounded-full text-sm font-medium"></span>
+                        </div>
+                        <!-- Info Paket -->
+                        <div class="space-y-2 text-sm mb-4">
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span id="bookingDetailNamaPaket" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span id="bookingDetailNamaTravel" class="font-semibold text-gray-800"></span></p>
+                        </div>
+                         <!-- Info Pemesan (dari screenshot) -->
+                        <div class="text-sm border-t border-gray-200 pt-3">
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Nama Pemesan</span>
+                                <span id="bookingDetailNama" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Kontak Telepon</span>
+                                <span id="bookingDetailTelepon" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Jumlah Pax</span>
+                                <span id="bookingDetailJumlahPax" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                             <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Nomor Invoice</span>
+                                <span id="bookingDetailNomorInvoice" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tab (Riwayat & Jamaah) -->
+                    <div>
+                        <!-- Tombol Tab -->
+                        <div class="flex border-b border-gray-200">
+                            <button id="tabBtnRiwayat" onclick="showRiwayatTab('riwayat')" class="tab-btn flex-1 py-3 px-4 font-semibold text-center text-[#bd292d] border-b-2 border-[#bd292d]">
+                                Riwayat Pembayaran
+                            </button>
+                            <button id="tabBtnJamaah" onclick="showRiwayatTab('jamaah')" class="tab-btn flex-1 py-3 px-4 font-semibold text-center text-gray-500 border-b-2 border-transparent hover:text-gray-700">
+                                Daftar Jamaah
+                            </button>
+                        </div>
+                        
+                        <!-- Konten Tab -->
+                        <div class="py-4">
+                            <!-- Konten Riwayat Pembayaran -->
+                            <div id="tabContentRiwayat" class="tab-content-riwayat space-y-3">
+                                <!-- Konten diisi JavaScript -->
+                            </div>
+                            <!-- Konten Daftar Jamaah -->
+                            <div id="tabContentJamaah" class="tab-content-riwayat hidden space-y-3">
+                                <!-- Konten diisi JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation (Fixed) -->
+        <div id="mainFooter" class="fixed bottom-0 left-0 right-0 max-w-lg mx-auto bottom-nav-gradient text-white flex justify-around items-center p-3 shadow-lg z-10">
+            
+            <!-- Tombol Riwayat Bayar (Sudah diperbarui) -->
+            <button id="navRiwayatBtn" onclick="showPage('riwayatSection')" class="bottom-nav-btn flex flex-col items-center text-xs font-medium opacity-75 hover:opacity-100">
+                <i class="fas fa-history text-lg mb-1"></i>
+                <span>Riwayat Bayar</span>
+            </button>
+            
+            <!-- Tombol Cari Paket (Sudah diperbarui) -->
+            <button id="navCariBtn" onclick="showPage('searchSection')" class="bottom-nav-btn flex flex-col items-center text-xs font-medium opacity-75 hover:opacity-100">
+                <i class="fas fa-search text-lg mb-1"></i>
+                <span>Cari Paket</span>
+            </button>
+        </div>
+
+        <!-- Booking/Detail Footer (Fixed) -->
+        <div id="bookingFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bottom-nav-gradient text-white flex justify-around items-center p-3 shadow-lg z-10">
+            <!-- Tombol Sebelumnya -->
+            <button onclick="showPage('homeSection')" id="prevButton" class="flex flex-col items-center text-xs font-medium opacity-75 hover:opacity-100 transition-opacity">
+                <i class="fas fa-arrow-left text-lg mb-1"></i>
+                <span>Sebelumnya</span>
+            </button>
+            <!-- Tombol Selanjutnya -->
+            <button onclick="showPage('bookingSection')" id="nextButton" class="flex flex-col items-center text-xs font-medium font-bold opacity-100 hover:opacity-75 transition-opacity">
+                <i class="fas fa-arrow-right text-lg mb-1"></i>
+                <span>Selanjutnya</span>
+            </button>
+        </div>
+
+        <!-- Payment Footer (Fixed) -->
+        <div id="paymentFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
+            <button onclick="submitPaymentAndGoToRiwayat()" 
+                    class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
+                Bayar
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+
+        let currentBookingDetails = {
+            // Ini akan diisi saat pengguna mengklik "Selanjutnya"
+            namaPaket: "Umroh Multazam 1447 H 9 Hari",
+            namaTravel: "Muhandis Wisata",
+            hargaKamar: 31000000,
+            pilihanKamar: "Quad",
+            pilihanKantor: "Jakarta",
+            jumlahJamaah: 1,
+            discountAmount: 0
+        };
+
+        // Database Dummy untuk Halaman Riwayat Bayar (berdasarkan screenshot Anda)
+        const dummyBookingDatabase = {
+            "DTTNEYIET3": {
+                namaPaket: "Umroh Multazam 1447 H 9 Hari",
+                namaTravel: "Muhandis Wisata",
+                paymentStatus: "Belum Lunas", // Status dummy
+                statusClass: "bg-yellow-100 text-yellow-800", // Warna status
+                namaPemesan: "Achmad Ghozali",
+                kontakTelepon: "085224131324",
+                email: "ghozaliizumi@gmail.com",
+                jumlahPax: "2 Pax",
+                nomorInvoice: "DP04727412",
+                nomorVA: "6060491762239551",
+                pembayaranDP: "IDR 20,000,000",
+                totalTagihan: "IDR 68,000,000",
+                daftarJamaah: [
+                    { name: "Achmad Ghozali", phone: "085224131324" },
+                    { name: "Noor Yasmin Ishmah", phone: "085224131324" }
+                ],
+                riwayatPembayaran: [
+                    { date: "01 Nov 2025", amount: "20,000,000", status: "Pending", method: "Virtual Account" },
+                    { date: "09 Nov 2025", amount: "15,000,000", status: "Gagal", method: "Virtual Account" }
+                ]
+            }
+            // Anda bisa tambahkan kode booking lain di sini
+        };
+
+        function showPage(pageIdToShow) {
+            
+            // --- LOGIKA HALAMAN ---
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            const pageToShow = document.getElementById(pageIdToShow);
+            if (pageToShow) {
+                pageToShow.classList.remove('hidden');
+            }
+
+            // --- LOGIKA FOOTER ---
+            const mainFooter = document.getElementById('mainFooter');
+            const bookingFooter = document.getElementById('bookingFooter');
+            const paymentFooter = document.getElementById('paymentFooter');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+
+            // Sembunyikan semua footer kontekstual terlebih dahulu
+            bookingFooter.classList.add('hidden');
+            paymentFooter.classList.add('hidden');
+            mainFooter.classList.add('hidden');
+
+
+            if (pageIdToShow === 'productDetailSection' || pageIdToShow === 'bookingSection' || pageIdToShow === 'paymentSection') {
+                // Halaman-halaman ini MENGGUNAKAN footer kontekstual
+                
+                if (pageIdToShow === 'productDetailSection') {
+                    // Tampilkan footer "Booking"
+                    bookingFooter.classList.remove('hidden');
+                    
+                    prevButton.onclick = () => showPage('homeSection');
+                    prevButton.innerHTML = '<i class="fas fa-arrow-left text-lg mb-1"></i><span>Sebelumnya</span>';
+                    
+                    nextButton.onclick = () => {
+                        // Ambil data dari Halaman Detail
+                        const kantor = document.querySelector('select[name="kantor_layanan"]').value;
+                        const kamarRadio = document.querySelector('input[name="kamar"]:checked');
+                        
+                        if (!kantor) {
+                            alert('Silakan pilih Kantor Layanan terlebih dahulu.');
+                            return;
+                        }
+                        if (!kamarRadio) {
+                            alert('Silakan pilih Tipe Kamar terlebih dahulu.');
+                            return;
+                        }
+                        
+                        const kamarLabelElement = kamarRadio.closest('label');
+                        const hargaKamarText = kamarLabelElement.querySelector('span.font-bold').innerText;
+                        const namaKamarText = kamarLabelElement.querySelector('span.ml-3').innerText;
+                        
+                        currentBookingDetails.pilihanKantor = document.querySelector('select[name="kantor_layanan"] option:checked').text;
+                        currentBookingDetails.pilihanKamar = namaKamarText;
+                        currentBookingDetails.hargaKamar = parseInt(hargaKamarText.replace('IDR ', '').replace(/\./g, ''));
+                        
+                        showPage('bookingSection');
+                    };
+
+                    nextButton.innerHTML = '<i class="fas fa-arrow-right text-lg mb-1"></i><span>Selanjutnya</span>';
+                    nextButton.classList.remove('bg-white', 'text-[#bd292d]', 'font-bold', 'py-3', 'px-6', 'rounded-lg', 'shadow-lg');
+
+                } else if (pageIdToShow === 'bookingSection') {
+                    // Tampilkan footer "Booking"
+                    bookingFooter.classList.remove('hidden');
+                    
+                    renderBookingPage(); // Panggil fungsi untuk isi data halaman booking
+                    
+                    prevButton.onclick = () => showPage('productDetailSection');
+                    prevButton.innerHTML = '<i class="fas fa-arrow-left text-lg mb-1"></i><span>Kembali</span>';
+                    
+                    // --- UBAH FUNGSI TOMBOL INI ---
+                    nextButton.onclick = () => {
+                        // VALIDASI DATA PEMBELI (Contoh sederhana)
+                        const buyerName = document.getElementById('buyerName').value;
+                        const buyerPhone = document.getElementById('buyerPhone').value;
+                        if (!buyerName || !buyerPhone) {
+                            alert('Silakan isi Nama Lengkap dan Nomor HP Pembeli.');
+                            return;
+                        }
+                        // Pindah ke halaman pembayaran
+                        showPage('paymentSection');
+                    };
+                    nextButton.innerHTML = 'Lanjut ke Pembayaran'; // Ubah teks tombol
+                    nextButton.classList.add('bg-white', 'text-[#bd292d]', 'font-bold', 'py-3', 'px-6', 'rounded-lg', 'shadow-lg');
+                
+                } else if (pageIdToShow === 'paymentSection') {
+                    // Tampilkan footer "Payment"
+                    paymentFooter.classList.remove('hidden');
+                    // Panggil fungsi untuk isi data halaman pembayaran
+                    renderPaymentPage();
+                }
+
+            } else {
+                // Tampilkan footer "Utama" (Home, Cari, Riwayat)
+                mainFooter.classList.remove('hidden');
+
+                // --- LOGIKA NAVIGASI BAWAH UTAMA ---
+                document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
+                    btn.classList.add('opacity-75');
+                    btn.classList.remove('opacity-100');
+                });
+                let activeNavBtnId = '';
+                if (pageIdToShow === 'searchSection') {
+                    activeNavBtnId = 'navCariBtn';
+                } else if (pageIdToShow === 'riwayatSection') {
+                    activeNavBtnId = 'navRiwayatBtn';
+                    // Reset tampilan pencarian setiap kali halaman dibuka
+                    document.getElementById('bookingCodeInput').value = '';
+                    document.getElementById('bookingSearchResult').classList.add('hidden');
+                    document.getElementById('bookingNotFound').classList.add('hidden');
+                }
+                if (activeNavBtnId) {
+                    const activeBtn = document.getElementById(activeNavBtnId);
+                    if (activeBtn) {
+                        activeBtn.classList.remove('opacity-75');
+                        activeBtn.classList.add('opacity-100');
+                    }
+                }
+            }
+        }
+
+        // Fungsi utama untuk mengisi data halaman booking
+        function renderBookingPage() {
+            // Isi info paket dari data global
+            document.getElementById('bookingNamaPaket').textContent = currentBookingDetails.namaPaket;
+            document.getElementById('bookingNamaTravel').textContent = currentBookingDetails.namaTravel;
+            document.getElementById('bookingKantorLayanan').textContent = currentBookingDetails.pilihanKantor;
+            document.getElementById('bookingJenisKamar').textContent = currentBookingDetails.pilihanKamar;
+
+            // Set jumlah jamaah awal
+            currentBookingDetails.jumlahJamaah = 1;
+            document.getElementById('jamaahCountDisplay').textContent = 1;
+            
+            // Render field jamaah dan update total
+            renderJamaahFields();
+            updateTotalPrice();
+            
+            // Uncheck "Tambahkan sebagai jamaah"
+            document.getElementById('buyerAsJamaah').checked = false;
+            // Reset input referal dan diskon
+            document.getElementById('buyerReferal').value = '';
+            currentBookingDetails.discountAmount = 0;
+        }
+
+        // Fungsi untuk mengubah jumlah jamaah
+        function updateJamaahCount(change) {
+            let count = currentBookingDetails.jumlahJamaah;
+            count += change;
+            
+            // Batasi minimal 1 jamaah
+            if (count < 1) count = 1; 
+            
+            currentBookingDetails.jumlahJamaah = count;
+            document.getElementById('jamaahCountDisplay').textContent = count;
+            
+            // Render ulang field jamaah dan harga
+            renderJamaahFields();
+            updateTotalPrice();
+        }
+
+        // Fungsi untuk mengupdate total harga (Versi baru dengan Diskon)
+        function updateTotalPrice() {
+            // Definisikan kode referal dan diskonnya
+            const DUMMY_REFERAL_CODE = "UHAJJ123";
+            const DISCOUNT_PER_JAMAAH = 500000;
+
+            // Ambil elemen-elemen yang relevan
+            const totalPriceEl = document.getElementById('bookingTotalPrice');
+            const discountEl = document.getElementById('bookingDiscountDisplay');
+            const referalInput = document.getElementById('buyerReferal');
+
+            // Ambil data dari state
+            const count = currentBookingDetails.jumlahJamaah;
+            const hargaKamar = currentBookingDetails.hargaKamar;
+            const referalCode = referalInput ? referalInput.value.trim().toUpperCase() : "";
+
+            // Hitung harga
+            let subtotal = hargaKamar * count;
+            let discountAmount = 0;
+
+            // Cek apakah kode referal valid
+            if (referalCode === DUMMY_REFERAL_CODE) {
+                discountAmount = DISCOUNT_PER_JAMAAH * count;
+                referalInput.classList.remove('border-red-500'); // Hapus error (jika ada)
+                referalInput.classList.add('border-green-500'); // Tampilkan sukses
+            } else if (referalCode !== "") {
+                referalInput.classList.add('border-red-500'); // Tampilkan error
+                referalInput.classList.remove('border-green-500');
+            } else {
+                 referalInput.classList.remove('border-red-500', 'border-green-500'); // Reset
+            }
+            
+            // Hitung total akhir
+            const finalTotal = subtotal - discountAmount;
+            
+            // Simpan diskon ke state global
+            currentBookingDetails.discountAmount = discountAmount;
+
+            // Update tampilan HTML
+            totalPriceEl.textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(finalTotal);
+            
+            if (discountAmount > 0) {
+                discountEl.textContent = `Diskon Referal: - IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}`;
+                discountEl.classList.remove('hidden');
+            } else {
+                discountEl.classList.add('hidden');
+            }
+        }
+
+        // Fungsi untuk auto-fill data pembeli ke jamaah 1
+        function toggleBuyerAsJamaah() {
+            const isChecked = document.getElementById('buyerAsJamaah').checked;
+            const buyerName = document.getElementById('buyerName').value;
+            const buyerPhone = document.getElementById('buyerPhone').value;
+            
+            const jamaahName1 = document.getElementById('jamaah_name_0');
+            const jamaahPhone1 = document.getElementById('jamaah_phone_0');
+            
+            if (isChecked) {
+                if (jamaahName1) {
+                    jamaahName1.value = buyerName;
+                    jamaahName1.readOnly = true;
+                    jamaahName1.classList.add('bg-gray-100');
+                }
+                if (jamaahPhone1) {
+                    jamaahPhone1.value = buyerPhone;
+                    jamaahPhone1.readOnly = true;
+                    jamaahPhone1.classList.add('bg-gray-100');
+                }
+            } else {
+                if (jamaahName1) {
+                    jamaahName1.value = '';
+                    jamaahName1.readOnly = false;
+                    jamaahName1.classList.remove('bg-gray-100');
+                }
+                if (jamaahPhone1) {
+                    jamaahPhone1.value = '';
+                    jamaahPhone1.readOnly = false;
+                    jamaahPhone1.classList.remove('bg-gray-100');
+                }
+            }
+        }
+
+        // Fungsi untuk membuat field input jamaah secara dinamis
+        function renderJamaahFields() {
+            const container = document.getElementById('jamaahFieldsContainer');
+            const count = currentBookingDetails.jumlahJamaah;
+            let fieldsHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                fieldsHTML += `
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <label class="block text-base font-semibold text-gray-700 mb-3">Jamaah ${i + 1}</label>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap Jamaah</label>
+                                <input type="text" id="jamaah_name_${i}" placeholder="Nama sesuai KTP" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nomor HP Jamaah</label>
+                                <input type="tel" id="jamaah_phone_${i}" placeholder="Nomor HP aktif" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = fieldsHTML;
+            
+            // Setelah field baru dibuat, periksa kembali status checkbox "Tambahkan sebagai jamaah"
+            toggleBuyerAsJamaah();
+        }
+
+        // Dummy function untuk tombol Bayar Sekarang
+        function submitBooking() {
+            // Nanti di sini kita akan kumpulkan semua data dan kirim ke Supabase
+            alert('Proses pemesanan dan pembayaran segera hadir!');
+        }
+
+        function renderPaymentPage() {
+            // --- KODE BARU DIMULAI DI SINI ---
+            // Definisikan jumlah DP per jamaah
+            const DUMMY_DP_PER_JAMAAH = 10000000; 
+
+            // (Ini adalah data dummy, nanti akan diganti dengan data asli dari booking)
+            const kodeBooking = "DTTNEYIET3";
+            const nomorInvoice = "DP04727412";
+            const nomorVA = "6060491762239551";
+
+            // Ambil data jumlah jamaah dari state
+            const jumlahJamaah = currentBookingDetails.jumlahJamaah;
+            
+            // Kalkulasi total tagihan penuh
+            const totalTagihan = (currentBookingDetails.hargaKamar * jumlahJamaah) - currentBookingDetails.discountAmount;
+            // Kalkulasi total DP yang harus dibayar
+            const totalDP = DUMMY_DP_PER_JAMAAH * jumlahJamaah;
+            // --- KODE BARU SELESAI DI SINI ---
+            
+            // Isi data pemesan dari form sebelumnya
+            document.getElementById('paymentNama').textContent = document.getElementById('buyerName').value || 'Belum diisi';
+            document.getElementById('paymentTelepon').textContent = document.getElementById('buyerPhone').value || 'Belum diisi';
+            document.getElementById('paymentEmail').textContent = document.getElementById('buyerEmail').value || 'Belum diisi';
+            document.getElementById('paymentJumlahPax').textContent = `${jumlahJamaah} Pax`;
+
+            // Isi data pembayaran
+            document.getElementById('paymentKodeBooking').textContent = kodeBooking;
+            document.getElementById('paymentNomorInvoice').textContent = nomorInvoice;
+            document.getElementById('paymentVA').textContent = nomorVA;
+            
+            // --- PERUBAHAN TAMPILAN HARGA ---
+            // Tampilkan jumlah DP sebagai "Pembayaran"
+            document.getElementById('paymentTotal').textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(totalDP);
+            // Tampilkan total tagihan penuh di bagian bawah
+            document.getElementById('paymentTotalTagihan').textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(totalTagihan);
+            // --- AKHIR PERUBAHAN ---
+            
+            // Update tombol copy
+            document.querySelector('button[onclick*="606049"]').onclick = () => copyToClipboard(nomorVA);
+            // Update tombol copy agar menyalin jumlah DP
+            document.querySelector('button[onclick*="12125000"]').onclick = () => copyToClipboard(totalDP.toString());
+        }
+
+        // Fungsi untuk menyalin teks ke clipboard
+        // Menggunakan execCommand agar berfungsi di dalam iframe/webview
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            try {
+                document.execCommand('copy');
+                alert('Teks berhasil disalin: ' + text);
+            } catch (err) {
+                alert('Gagal menyalin teks.');
+            }
+            document.body.removeChild(el);
+        }
+
+        function submitPaymentAndGoToRiwayat() {
+            // (Nanti di sini Anda bisa tambahkan logika API pembayaran yang sesungguhnya)
+            // Untuk saat ini, kita anggap pembayaran berhasil.
+            alert('Simulasi pembayaran berhasil!');
+
+            // Ambil kode booking yang sedang ditampilkan di halaman pembayaran
+            const activeBookingCode = document.getElementById('paymentKodeBooking').textContent;
+            
+            // 1. Pindah ke halaman riwayat
+            showPage('riwayatSection');
+            
+            // 2. Isi otomatis kotak pencarian di halaman riwayat
+            const bookingInput = document.getElementById('bookingCodeInput');
+            if (bookingInput) {
+                bookingInput.value = activeBookingCode;
+            }
+            
+            // 3. Picu pencarian secara otomatis
+            // Kita beri sedikit jeda (timeout) agar halaman sempat berganti
+            setTimeout(() => {
+                findBooking();
+            }, 100); // jeda 100ms
+        }
+
+        function getHistoryPaymentStatusClass(status) {
+            if (!status) return 'bg-gray-100 text-gray-800'; // Default jika status null
+            
+            switch (status.toLowerCase()) {
+                case 'pending':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'lunas':
+                case 'paid':
+                    return 'bg-green-100 text-green-800';
+                case 'gagal':
+                case 'failed':
+                    return 'bg-red-100 text-red-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        // Fungsi untuk mencari Kode Booking
+        function findBooking() {
+            const code = document.getElementById('bookingCodeInput').value.toUpperCase(); // Ambil kode & ubah ke huruf besar
+            const resultContainer = document.getElementById('bookingSearchResult');
+            const notFoundMsg = document.getElementById('bookingNotFound');
+
+            const booking = dummyBookingDatabase[code];
+
+            if (booking) {
+                // DATA DITEMUKAN
+                resultContainer.classList.remove('hidden');
+                notFoundMsg.classList.add('hidden');
+                
+                // 1. Isi Detail Paket & Status
+                document.getElementById('bookingPaymentStatus').textContent = booking.paymentStatus;
+                document.getElementById('bookingPaymentStatus').className = `px-3 py-1 rounded-full text-sm font-medium ${booking.statusClass}`;
+                document.getElementById('bookingDetailNamaPaket').textContent = booking.namaPaket;
+                document.getElementById('bookingDetailNamaTravel').textContent = booking.namaTravel;
+                document.getElementById('bookingDetailNama').textContent = booking.namaPemesan;
+                document.getElementById('bookingDetailTelepon').textContent = booking.kontakTelepon;
+                document.getElementById('bookingDetailJumlahPax').textContent = booking.jumlahPax;
+                document.getElementById('bookingDetailNomorInvoice').textContent = booking.nomorInvoice;
+
+                // 2. Isi Tab Riwayat Pembayaran
+                const riwayatContainer = document.getElementById('tabContentRiwayat');
+                riwayatContainer.innerHTML = booking.riwayatPembayaran.map(item => `
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-gray-800">Pembayaran</p>
+                            <p class="text-xs text-gray-500">${item.date} via ${item.method}</p>
+                        </div>
+                        <!-- 👇 KODE BARU DIMULAI DI SINI 👇 -->
+                        <div class="text-center">
+                            <span class="font-bold text-gray-900">IDR ${item.amount}</span>
+                            <!-- Menampilkan Status Pembayaran -->
+                            <span class="block text-xs font-medium px-2 py-0.5 rounded-full mt-1 ${getHistoryPaymentStatusClass(item.status)}">
+                                ${item.status || 'N/A'}
+                            </span>
+                        </div>
+                        <!-- 👆 KODE BARU SELESAI DI SINI 👆 -->
+                    </div>
+                `).join('');
+
+                // 3. Isi Tab Daftar Jamaah
+                const jamaahContainer = document.getElementById('tabContentJamaah');
+                jamaahContainer.innerHTML = booking.daftarJamaah.map((jamaah, index) => `
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <p class="font-semibold text-gray-800">Jamaah ${index + 1}: ${jamaah.name}</p>
+                        <p class="text-xs text-gray-500">No. HP: ${jamaah.phone}</p>
+                    </div>
+                `).join('');
+                
+                // 4. Pastikan tab pertama yang aktif
+                showRiwayatTab('riwayat');
+
+            } else {
+                // DATA TIDAK DITEMUKAN
+                resultContainer.classList.add('hidden');
+                notFoundMsg.classList.remove('hidden');
+            }
+        }
+
+        // Fungsi untuk mengganti tab di halaman riwayat
+        function showRiwayatTab(tabName) {
+            // Sembunyikan semua konten tab
+            document.querySelectorAll('.tab-content-riwayat').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Reset semua style tombol tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-[#bd292d]', 'border-[#bd292d]');
+                btn.classList.add('text-gray-500', 'border-transparent');
+            });
+
+            // Tampilkan konten tab yang dipilih
+            document.getElementById(`tabContent${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`).classList.remove('hidden');
+            // Terapkan style aktif pada tombol yang dipilih
+            const activeBtn = document.getElementById(`tabBtn${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`);
+            activeBtn.classList.add('text-[#bd292d]', 'border-[#bd292d]');
+            activeBtn.classList.remove('text-gray-500', 'border-transparent');
+        }
+
+    </script>
+
+</body>
+</html>
