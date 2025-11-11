@@ -37,18 +37,92 @@
     <div class="relative max-w-lg mx-auto bg-white shadow-lg overflow-hidden min-h-screen">
 
         <!-- Top Header (Fixed) -->
-        <div class="fixed top-0 left-0 right-0 max-w-lg mx-auto bg-white shadow z-10 p-4 flex items-center justify-between">
-            <h1 class="text-xl font-bold text-gray-800">Umroh Markeplace</h1>
-            <button class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+        <div class="fixed top-0 left-0 right-0 max-w-lg mx-auto bg-[#bd292d] shadow z-10 p-4 grid grid-cols-3 items-center">
+            
+            <!-- Kiri: Tombol Back -->
+            <div class="text-left">
+                <button id="headerBackBtn" class="hidden text-white hover:text-gray-200">
+                    <i class="fas fa-arrow-left text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Tengah: Judul (Selalu Terlihat) -->
+            <div class="text-center">
+                <h1 id="headerTitle" class="text-xl font-bold text-white cursor-pointer whitespace-nowrap">Umroh Markeplace</h1>
+            </div>
+
+            <!-- Kanan: Tombol Close -->
+            <div class="text-right">
+                <button class="text-gray-500 hover:text-white">
+                    <i class="fas fa-times text-2xl text-white"></i>
+                </button>
+            </div>
         </div>
 
+        <!-- Landing Page Section (Halaman Sapaan) -->
+        <section id="landingSection" class="page-content pt-20 pb-20 px-4">
+            <div class="max-w-lg mx-auto">
+                
+                <!-- Info Promosi -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-4 mb-6">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT8BOBzGHCUkrhYw8tZYH5AUusxcAjFJ-IVDPApto4LRJVO2UEHIDaFWtPRDiCO3neK9oekae4TJpd5W1F-HQtFTGadwh3qXPQM_gwifY24hYfrRPNnYRGbjHdn-QlO50Y3ERfzfZl_k9bbvUhD0kb783DTRF0KaEq3hlSRAuqfZrtM3_X93P-JagkM_w/s3000/makkah.jpg" 
+                         alt="Info Promosi"
+                         class="w-full h-40 object-cover rounded-lg mb-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Selamat Datang di Umroh Marketplace</h2>
+                    <p class="text-sm text-gray-600">
+                        Temukan paket umroh dan haji terbaik dari travel-travel mitra terpercaya.
+                        Aman, mudah, dan sesuai syariah.
+                    </p>
+                </div>
+
+                <!-- Daftar Marketplace Pilihan -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Marketplace Pilihan</h3>
+                    <div class="space-y-4">
+                        
+                        <!-- Marketplace 1: umrohajj.id -->
+                        <div onclick="showPage('homeSection')" 
+                             class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all">
+                            <div class="flex-shrink-0">
+                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgdDAue-ErWA37my1ql_OeJAP1ie5mgVd1wPWJTxpEwhsXIuL5dRzdTX3y2RP6TgFc93DkM_LkvqcUGA4dSpLEdqsLo39wwOUUR-VBT7KY22lpG1BPg5Wo3VVSeWDhe34EZ70UI2ejrNQ4ENuR_BtnIBrSVcknbsXHi8s8n4T5ZngCP9l1kER-MJBTgcoU" 
+                                     alt="Logo umrohajj.id"
+                                     class="w-16 h-16 object-contain rounded-lg">
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-gray-800">umrohajj.id</h4>
+                                <p class="text-sm text-gray-600">Marketplace paket umroh dan haji terverifikasi.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- Marketplace 2 (Contoh Dummy) -->
+                        <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-xl border border-gray-200 cursor-not-allowed opacity-60">
+                            <div class="flex-shrink-0">
+                                <img src="https://placehold.co/64x64/e0e0e0/909090?text=Logo+Mitra" 
+                                     alt="Logo Mitra Lain"
+                                     class="w-16 h-16 object-contain rounded-lg">
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-gray-800">Mitra Lain (Segera Hadir)</h4>
+                                <p class="text-sm text-gray-600">Marketplace lain akan segera bergabung.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Main Content Area (Scrollable) -->
-        <section id="homeSection" class="page-content pt-20 pb-20 px-4"> <!-- Adjusted padding for fixed header and bottom nav -->
+        <section id="homeSection" class="page-content pt-20 pb-20 px-4 hidden"> <!-- Adjusted padding for fixed header and bottom nav -->
             <!-- Logo & Description Section -->
             <div class="text-center mb-6">
-                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhPuzMKZN3KsmwAjNG669XiEk0IVykABfk2CCt7cOBkcM1U6hMVPqRMau5LKhWWf9MKqgHArIUFJfbcV4KZHuM8UoiQqR7LPBftw34tAHJKfsA6ds3IN_8vHmsl1G1KGQLOeb7OIN_U02GaTuaJG19PnOmJERSA4GJQX1AQDLQvooH61iuaXng269QmxlY" alt="Bank Jambi" class="w-1/4 mb-2 mx-auto">
+                <div class="flex justify-center">
+                            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhPuzMKZN3KsmwAjNG669XiEk0IVykABfk2CCt7cOBkcM1U6hMVPqRMau5LKhWWf9MKqgHArIUFJfbcV4KZHuM8UoiQqR7LPBftw34tAHJKfsA6ds3IN_8vHmsl1G1KGQLOeb7OIN_U02GaTuaJG19PnOmJERSA4GJQX1AQDLQvooH61iuaXng269QmxlY" alt="Bank Jambi" class="w-1/4 mb-2 mx-auto">
+                            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEidnBdNHc0O-o4rWQX1HPIlAGXrbOM4rrNJgzfUjLX2qX3qM2tWB10fVb8ofGStJRTiRSH5gRcHtxKB9QSRSYzGLal2xwJmNnEXVeHzwp1uHBkUBnBSaa5KqeDJqulwbpGajMvPqDyewY_rfZ30yDSe78FDHft8bi9cH49cPP2cL7vg6yZTbgwiaNYG5Kc" alt="Bank Jambi" class="w-1/4 mb-2 mx-auto">
+                </div>
                 <p class="text-sm text-gray-600 leading-tight">
                     Produk dan Jasa yang tersedia merupakan tanggung jawab dari <a href="#" class="text-[#bd292d] font-medium">umrohajj.id</a>.
                     bila terjadi kendala pada pemesanan dan transaksi silahkan menghubungi
@@ -60,8 +134,6 @@
                     <span class="text-yellow-600 font-bold text-lg">0800 8585 000</span>
                 </div>
             </div>
-
-        
 
             <p class="text-center text-sm text-gray-500 mb-4">Tersedia 182 Paket</p>
 
@@ -187,9 +259,6 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl font-bold text-gray-800">Cari Paket</h2>
                     <!-- Tombol untuk kembali ke halaman utama -->
-                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
-                        <i class="fas fa-times mr-1"></i> Tutup
-                    </button>
                 </div>
                 
                 <!-- Form Filter -->
@@ -265,9 +334,6 @@
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-gray-800">Detail Paket</h2>
                     <!-- Tombol untuk kembali ke halaman utama -->
-                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
-                        <i class="fas fa-times mr-1"></i> Tutup
-                    </button>
                 </div>
 
                 <!-- Konten Detail Paket -->
@@ -428,9 +494,6 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl font-bold text-gray-800">Detail Pemesanan</h2>
                     <!-- Tombol untuk kembali ke halaman detail produk -->
-                    <button onclick="showPage('productDetailSection')" class="text-[#bd292d] font-medium text-lg">
-                        <i class="fas fa-times mr-1"></i> Tutup
-                    </button>
                 </div>
                 
                 <!-- Konten Halaman Pemesanan -->
@@ -511,6 +574,61 @@
             </div>
         </section>
 
+        <!-- Confirmation Section -->
+        <section id="confirmSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Konfirmasi Pemesanan</h2>
+                </div>
+                
+                <!-- Konten Halaman Konfirmasi -->
+                <div class="space-y-6">
+                    
+                    <!-- 1. Ringkasan Paket -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Ringkasan Paket</label>
+                        <div id="confirmPaket" class="space-y-2 text-sm">
+                            <!-- Diisi oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 2. Ringkasan Info Pembeli -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Info Pembeli</label>
+                        <div id="confirmPembeli" class="space-y-2 text-sm">
+                            <!-- Diisi oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 3. Ringkasan Daftar Jamaah -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Ringkasan Daftar Jamaah</label>
+                        <div id="confirmJamaah" class="space-y-2 text-sm">
+                            <!-- Diisi oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 4. Ringkasan Total Pembayaran -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Total Pembayaran</label>
+                        <div id="confirmTotal" class="space-y-2 text-sm">
+                            <!-- Diisi oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 5. Checkbox Syarat & Ketentuan -->
+                    <div class="flex items-start space-x-3 pt-4">
+                        <input type="checkbox" id="confirmSyaratCheckbox" class="w-5 h-5 mt-1 text-[#bd292d] rounded focus:ring-[#bd292d]">
+                        <label for="confirmSyaratCheckbox" class="text-sm text-gray-700">
+                            Saya telah membaca dan menyetujui <a href="#" onclick="alert('Syarat & Ketentuan segera hadir!')" class="text-[#bd292d] font-medium hover:underline">Syarat & Ketentuan</a> pembelian paket umroh ini.
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </section>       
+
         <!-- Payment Detail Section -->
         <section id="paymentSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
             <div class="max-w-lg mx-auto">
@@ -518,9 +636,6 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl font-bold text-gray-800">Detail Pembayaran</h2>
                     <!-- Tombol untuk kembali ke halaman booking -->
-                    <button onclick="showPage('bookingSection')" class="text-[#bd292d] font-medium text-lg">
-                        <i class="fas fa-arrow-left mr-1"></i> Kembali
-                    </button>
                 </div>
                 
                 <!-- Konten Halaman Pembayaran -->
@@ -583,6 +698,76 @@
             </div>
         </section>
 
+        <!-- Cara Pembayaran Section -->
+        <section id="caraPembayaranSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Header Halaman -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">Cara Pembayaran</h2>
+                </div>
+                
+                <!-- Konten Halaman Cara Pembayaran -->
+                <div class="space-y-6">
+                    
+                    <!-- 1. Ringkasan Info Pembayaran -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4 space-y-3">
+                        
+                        <!-- Kode Booking -->
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Kode Booking</p>
+                                <p id="caraBayarKodeBooking" class="text-2xl font-bold text-gray-800"></p>
+                            </div>
+                            <!-- Tombol Copy Dummy -->
+                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
+                                <i class="fas fa-copy"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Nomor VA -->
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Nomor Virtual Account</p>
+                                <p id="caraBayarVA" class="text-2xl font-bold text-[#bd292d]"></p>
+                            </div>
+                             <!-- Tombol Copy Dummy -->
+                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
+                                <i class="fas fa-copy"></i>
+                            </div>
+                        </div>
+
+                        <!-- Jumlah DP -->
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Jumlah DP (Down Payment)</p>
+                                <p id="caraBayarTotal" class="text-2xl font-bold text-[#bd292d]"></p>
+                            </div>
+                             <!-- Tombol Copy Dummy -->
+                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
+                                <i class="fas fa-copy"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 2. Tata Cara Pembayaran (Dummy) -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Tata Cara Pembayaran</label>
+                        <ol class="list-decimal list-inside text-sm text-gray-600 space-y-2">
+                            <li>Buka aplikasi mobile banking atau ATM Anda.</li>
+                            <li>Pilih menu "Transfer" lalu "Virtual Account".</li>
+                            <li>Masukkan Nomor Virtual Account di atas.</li>
+                            <li>Pastikan nominal pembayaran sudah sesuai dengan Jumlah DP.</li>
+                            <li>Ikuti instruksi untuk menyelesaikan pembayaran.</li>
+                            <li>Simpan bukti transfer Anda.</li>
+                            <li>Pesanan Anda akan otomatis terkonfirmasi setelah pembayaran berhasil.</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Riwayat Bayar Section -->
         <section id="riwayatSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
             <div class="max-w-lg mx-auto">
@@ -590,9 +775,6 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl font-bold text-gray-800">Riwayat Bayar</h2>
                     <!-- Tombol untuk kembali ke halaman utama -->
-                    <button onclick="showPage('homeSection')" class="text-[#bd292d] font-medium text-lg">
-                        <i class="fas fa-times mr-1"></i> Tutup
-                    </button>
                 </div>
                 
                 <!-- 1. Kotak Pencarian Kode Booking -->
@@ -674,7 +856,7 @@
         </section>
 
         <!-- Bottom Navigation (Fixed) -->
-        <div id="mainFooter" class="fixed bottom-0 left-0 right-0 max-w-lg mx-auto bottom-nav-gradient text-white flex justify-around items-center p-3 shadow-lg z-10">
+        <div id="mainFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bottom-nav-gradient text-white flex justify-around items-center p-3 shadow-lg z-10">
             
             <!-- Tombol Riwayat Bayar (Sudah diperbarui) -->
             <button id="navRiwayatBtn" onclick="showPage('riwayatSection')" class="bottom-nav-btn flex flex-col items-center text-xs font-medium opacity-75 hover:opacity-100">
@@ -690,24 +872,27 @@
         </div>
 
         <!-- Booking/Detail Footer (Fixed) -->
-        <div id="bookingFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bottom-nav-gradient text-white flex justify-around items-center p-3 shadow-lg z-10">
-            <!-- Tombol Sebelumnya -->
-            <button onclick="showPage('homeSection')" id="prevButton" class="flex flex-col items-center text-xs font-medium opacity-75 hover:opacity-100 transition-opacity">
-                <i class="fas fa-arrow-left text-lg mb-1"></i>
-                <span>Sebelumnya</span>
-            </button>
-            <!-- Tombol Selanjutnya -->
-            <button onclick="showPage('bookingSection')" id="nextButton" class="flex flex-col items-center text-xs font-medium font-bold opacity-100 hover:opacity-75 transition-opacity">
-                <i class="fas fa-arrow-right text-lg mb-1"></i>
-                <span>Selanjutnya</span>
+        <div id="bookingFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
+            <!-- Tombol "Selanjutnya" / "Bayar" (Full-width) -->
+            <button id="nextButton" 
+                    class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
+                <!-- Teks dan onclick akan diatur oleh JavaScript -->
             </button>
         </div>
 
         <!-- Payment Footer (Fixed) -->
         <div id="paymentFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
-            <button onclick="submitPaymentAndGoToRiwayat()" 
+            <button onclick="showPage('caraPembayaranSection')" 
                     class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
                 Bayar
+            </button>
+        </div>
+
+        <div id="tutupFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
+            <!-- Tombol ini akan memanggil fungsi yang sama dengan tombol 'Bayar' sebelumnya -->
+            <button onclick="submitPaymentAndGoToRiwayat()" 
+                    class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
+                Tutup
             </button>
         </div>
 
@@ -753,7 +938,38 @@
             // Anda bisa tambahkan kode booking lain di sini
         };
 
-        function showPage(pageIdToShow) {
+function showPage(pageIdToShow) {
+            window.scrollTo(0, 0);
+            // --- LOGIKA HEADER DINAMIS ---
+            const headerBackBtn = document.getElementById('headerBackBtn');
+            
+            if (pageIdToShow === 'landingSection') {
+                headerBackBtn.classList.add('hidden');
+            } else {
+                headerBackBtn.classList.remove('hidden');
+
+                let parentPage = 'landingSection'; // Default kembali ke landing
+                
+                if (pageIdToShow === 'productDetailSection') {
+                    parentPage = 'homeSection';
+                } else if (pageIdToShow === 'bookingSection') {
+                    parentPage = 'productDetailSection';
+                } else if (pageIdToShow === 'confirmSection') {
+                    parentPage = 'bookingSection';
+                } else if (pageIdToShow === 'paymentSection') {
+                    parentPage = 'confirmSection';
+                // --- 👇 PERUBAHAN LOGIKA BACK BUTTON 👇 ---
+                } else if (pageIdToShow === 'caraPembayaranSection') { 
+                    parentPage = 'paymentSection';
+                // --- 👆 AKHIR PERUBAHAN 👆 ---
+                } else if (pageIdToShow === 'riwayatSection' || pageIdToShow === 'searchSection') {
+                    parentPage = 'homeSection';
+                } else if (pageIdToShow === 'homeSection') {
+                    parentPage = 'landingSection';
+                }
+                
+                headerBackBtn.onclick = () => showPage(parentPage);
+            }
             
             // --- LOGIKA HALAMAN ---
             document.querySelectorAll('.page-content').forEach(page => {
@@ -768,89 +984,86 @@
             const mainFooter = document.getElementById('mainFooter');
             const bookingFooter = document.getElementById('bookingFooter');
             const paymentFooter = document.getElementById('paymentFooter');
-            const prevButton = document.getElementById('prevButton');
+            const tutupFooter = document.getElementById('tutupFooter'); // <-- Variabel baru
             const nextButton = document.getElementById('nextButton');
 
             // Sembunyikan semua footer kontekstual terlebih dahulu
             bookingFooter.classList.add('hidden');
             paymentFooter.classList.add('hidden');
+            tutupFooter.classList.add('hidden'); // <-- Sembunyikan footer baru
             mainFooter.classList.add('hidden');
 
 
-            if (pageIdToShow === 'productDetailSection' || pageIdToShow === 'bookingSection' || pageIdToShow === 'paymentSection') {
-                // Halaman-halaman ini MENGGUNAKAN footer kontekstual
+            if (pageIdToShow === 'productDetailSection' || pageIdToShow === 'bookingSection' || pageIdToShow === 'confirmSection' || pageIdToShow === 'paymentSection' || pageIdToShow === 'caraPembayaranSection') {
                 
                 if (pageIdToShow === 'productDetailSection') {
-                    // Tampilkan footer "Booking"
                     bookingFooter.classList.remove('hidden');
                     
-                    prevButton.onclick = () => showPage('homeSection');
-                    prevButton.innerHTML = '<i class="fas fa-arrow-left text-lg mb-1"></i><span>Sebelumnya</span>';
-                    
                     nextButton.onclick = () => {
-                        // Ambil data dari Halaman Detail
+                        // ... (logika validasi & ambil data) ...
                         const kantor = document.querySelector('select[name="kantor_layanan"]').value;
                         const kamarRadio = document.querySelector('input[name="kamar"]:checked');
-                        
-                        if (!kantor) {
-                            alert('Silakan pilih Kantor Layanan terlebih dahulu.');
-                            return;
-                        }
-                        if (!kamarRadio) {
-                            alert('Silakan pilih Tipe Kamar terlebih dahulu.');
-                            return;
-                        }
-                        
+                        if (!kantor) { alert('Silakan pilih Kantor Layanan terlebih dahulu.'); return; }
+                        if (!kamarRadio) { alert('Silakan pilih Tipe Kamar terlebih dahulu.'); return; }
                         const kamarLabelElement = kamarRadio.closest('label');
                         const hargaKamarText = kamarLabelElement.querySelector('span.font-bold').innerText;
                         const namaKamarText = kamarLabelElement.querySelector('span.ml-3').innerText;
-                        
                         currentBookingDetails.pilihanKantor = document.querySelector('select[name="kantor_layanan"] option:checked').text;
                         currentBookingDetails.pilihanKamar = namaKamarText;
                         currentBookingDetails.hargaKamar = parseInt(hargaKamarText.replace('IDR ', '').replace(/\./g, ''));
                         
                         showPage('bookingSection');
                     };
-
-                    nextButton.innerHTML = '<i class="fas fa-arrow-right text-lg mb-1"></i><span>Selanjutnya</span>';
-                    nextButton.classList.remove('bg-white', 'text-[#bd292d]', 'font-bold', 'py-3', 'px-6', 'rounded-lg', 'shadow-lg');
-
+                    nextButton.innerHTML = '<i class="fas fa-arrow-right mr-2"></i><span>Selanjutnya</span>';
+                    
                 } else if (pageIdToShow === 'bookingSection') {
-                    // Tampilkan footer "Booking"
                     bookingFooter.classList.remove('hidden');
+                    renderBookingPage(); 
                     
-                    renderBookingPage(); // Panggil fungsi untuk isi data halaman booking
-                    
-                    prevButton.onclick = () => showPage('productDetailSection');
-                    prevButton.innerHTML = '<i class="fas fa-arrow-left text-lg mb-1"></i><span>Kembali</span>';
-                    
-                    // --- UBAH FUNGSI TOMBOL INI ---
                     nextButton.onclick = () => {
-                        // VALIDASI DATA PEMBELI (Contoh sederhana)
                         const buyerName = document.getElementById('buyerName').value;
                         const buyerPhone = document.getElementById('buyerPhone').value;
                         if (!buyerName || !buyerPhone) {
                             alert('Silakan isi Nama Lengkap dan Nomor HP Pembeli.');
                             return;
                         }
-                        // Pindah ke halaman pembayaran
+                        showPage('confirmSection'); 
+                    };
+                    nextButton.innerHTML = 'Selanjutnya';
+                
+                } else if (pageIdToShow === 'confirmSection') { 
+                    bookingFooter.classList.remove('hidden');
+                    renderConfirmPage(); 
+                    
+                    nextButton.onclick = () => {
+                        const isChecked = document.getElementById('confirmSyaratCheckbox').checked;
+                        if (!isChecked) {
+                            alert('Anda harus menyetujui Syarat & Ketentuan untuk melanjutkan.');
+                            return;
+                        }
                         showPage('paymentSection');
                     };
-                    nextButton.innerHTML = 'Lanjut ke Pembayaran'; // Ubah teks tombol
-                    nextButton.classList.add('bg-white', 'text-[#bd292d]', 'font-bold', 'py-3', 'px-6', 'rounded-lg', 'shadow-lg');
-                
+                    nextButton.innerHTML = 'Lanjut ke Pembayaran';
+
                 } else if (pageIdToShow === 'paymentSection') {
-                    // Tampilkan footer "Payment"
                     paymentFooter.classList.remove('hidden');
-                    // Panggil fungsi untuk isi data halaman pembayaran
                     renderPaymentPage();
+                
+                // --- 👇 BLOK BARU UNTUK HALAMAN CARA BAYAR 👇 ---
+                } else if (pageIdToShow === 'caraPembayaranSection') {
+                    tutupFooter.classList.remove('hidden');
+                    renderCaraPembayaranPage();
                 }
+                // --- 👆 AKHIR BLOK BARU 👆 ---
 
             } else {
-                // Tampilkan footer "Utama" (Home, Cari, Riwayat)
-                mainFooter.classList.remove('hidden');
-
-                // --- LOGIKA NAVIGASI BAWAH UTAMA ---
+                if (pageIdToShow === 'landingSection') {
+                    mainFooter.classList.add('hidden');
+                } else {
+                    mainFooter.classList.remove('hidden'); 
+                }
+                
+                // ... (sisa logika mainFooter tidak berubah) ...
                 document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
                     btn.classList.add('opacity-75');
                     btn.classList.remove('opacity-100');
@@ -860,7 +1073,6 @@
                     activeNavBtnId = 'navCariBtn';
                 } else if (pageIdToShow === 'riwayatSection') {
                     activeNavBtnId = 'navRiwayatBtn';
-                    // Reset tampilan pencarian setiap kali halaman dibuka
                     document.getElementById('bookingCodeInput').value = '';
                     document.getElementById('bookingSearchResult').classList.add('hidden');
                     document.getElementById('bookingNotFound').classList.add('hidden');
@@ -1032,6 +1244,58 @@
             alert('Proses pemesanan dan pembayaran segera hadir!');
         }
 
+        // Fungsi untuk mengisi halaman Konfirmasi Pemesanan
+        function renderConfirmPage() {
+            // 1. Ambil data dari state
+            const { namaPaket, namaTravel, pilihanKantor, pilihanKamar, jumlahJamaah, discountAmount } = currentBookingDetails;
+            const hargaKamar = currentBookingDetails.hargaKamar;
+
+            // 2. Ambil data dari form pembeli
+            const buyerName = document.getElementById('buyerName').value;
+            const buyerPhone = document.getElementById('buyerPhone').value;
+            const buyerEmail = document.getElementById('buyerEmail').value;
+            const buyerReferal = document.getElementById('buyerReferal').value;
+
+            // 3. Ambil data dari form jamaah
+            let jamaahListHTML = '<ul class="list-decimal list-inside">';
+            for (let i = 0; i < jumlahJamaah; i++) {
+                const jamaahName = document.getElementById(`jamaah_name_${i}`).value || 'Belum diisi';
+                const jamaahPhone = document.getElementById(`jamaah_phone_${i}`).value || 'Belum diisi';
+                jamaahListHTML += `<li class="mb-1"><span class="font-semibold">${jamaahName}</span> (${jamaahPhone})</li>`;
+            }
+            jamaahListHTML += '</ul>';
+
+            // 4. Hitung harga
+            const subtotal = hargaKamar * jumlahJamaah;
+            const finalTotal = subtotal - discountAmount;
+
+            // 5. Isi HTML ke halaman konfirmasi
+            document.getElementById('confirmPaket').innerHTML = `
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span class="font-semibold text-gray-800">${namaPaket}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span class="font-semibold text-gray-800">${namaTravel}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Kantor</span>: <span class="font-semibold text-gray-800">${pilihanKantor}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Kamar</span>: <span class="font-semibold text-gray-800">${pilihanKamar}</span></p>
+            `;
+            
+            document.getElementById('confirmPembeli').innerHTML = `
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Nama</span>: <span class="font-semibold text-gray-800">${buyerName}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">No. HP</span>: <span class="font-semibold text-gray-800">${buyerPhone}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Email</span>: <span class="font-semibold text-gray-800">${buyerEmail}</span></p>
+                ${buyerReferal ? `<p><span class="font-medium text-gray-500 w-28 inline-block">Referal</span>: <span class="font-semibold text-gray-800">${buyerReferal}</span></p>` : ''}
+            `;
+
+            document.getElementById('confirmJamaah').innerHTML = jamaahListHTML;
+
+            document.getElementById('confirmTotal').innerHTML = `
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Subtotal</span>: <span class="font-semibold text-gray-800">IDR ${new Intl.NumberFormat('id-ID').format(subtotal)}</span></p>
+                ${discountAmount > 0 ? `<p><span class="font-medium text-gray-500 w-28 inline-block">Diskon</span>: <span class="font-semibold text-green-600">- IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}</span></p>` : ''}
+                <p class="border-t border-gray-300 pt-2 mt-2"><span class="font-bold text-gray-600 w-28 inline-block">Total Bayar</span>: <span class="font-bold text-[#bd292d] text-lg">IDR ${new Intl.NumberFormat('id-ID').format(finalTotal)}</span></p>
+            `;
+            
+            // 6. Reset checkbox
+            document.getElementById('confirmSyaratCheckbox').checked = false;
+        }
+
         function renderPaymentPage() {
             // --- KODE BARU DIMULAI DI SINI ---
             // Definisikan jumlah DP per jamaah
@@ -1073,6 +1337,19 @@
             document.querySelector('button[onclick*="606049"]').onclick = () => copyToClipboard(nomorVA);
             // Update tombol copy agar menyalin jumlah DP
             document.querySelector('button[onclick*="12125000"]').onclick = () => copyToClipboard(totalDP.toString());
+        }
+
+        // Fungsi untuk mengisi halaman Cara Pembayaran
+        function renderCaraPembayaranPage() {
+            // (Kita ambil data dari elemen di halaman 'paymentSection' yang baru saja diisi)
+            const kodeBooking = document.getElementById('paymentKodeBooking').textContent;
+            const nomorVA = document.getElementById('paymentVA').textContent;
+            const totalDP = document.getElementById('paymentTotal').textContent;
+
+            // Isi ke halaman "Cara Pembayaran"
+            document.getElementById('caraBayarKodeBooking').textContent = kodeBooking;
+            document.getElementById('caraBayarVA').textContent = nomorVA;
+            document.getElementById('caraBayarTotal').textContent = totalDP;
         }
 
         // Fungsi untuk menyalin teks ke clipboard
