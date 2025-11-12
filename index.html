@@ -346,6 +346,7 @@
                              class="w-full h-48 object-cover rounded-lg border border-gray-200 mb-4">
                         <h3 class="text-2xl font-bold text-gray-900">Umroh Multazam 1447 H 9 Hari</h3>
                         <p class="text-sm font-semibold text-gray-700">Muhandis Wisata</p>
+                        <p class="text-sm text-gray-500 mb-2">22 Nov 2025 - 30 Nov 2025</p>
                     </div>
 
                     <!-- Pilih Kantor Layanan -->
@@ -506,6 +507,7 @@
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span id="bookingNamaPaket" class="font-semibold text-gray-800"></span></p>
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span id="bookingNamaTravel" class="font-semibold text-gray-800"></span></p>
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Kantor</span>: <span id="bookingKantorLayanan" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Tanggal</span>: <span id="bookingTanggalPaket" class="font-semibold text-gray-800"></span></p>
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Kamar</span>: <span id="bookingJenisKamar" class="font-semibold text-gray-800"></span></p>
                         </div>
                     </div>
@@ -780,7 +782,7 @@
                 <!-- 1. Kotak Pencarian Kode Booking -->
                 <div id="bookingSearchBox" class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
                     <label for="bookingCodeInput" class="block text-lg font-semibold text-gray-700 mb-3">Lacak Pesanan</label>
-                    <p class="text-sm text-gray-500 mb-3">Masukkan Kode Booking untuk melihat detail pesanan dan riwayat pembayaran Anda.</p>
+                    <p class="text-sm text-gray-500 mb-3">Masukkan Kode Booking untuk melihat detail pesanan dan riwayat pembayaran Anda. //Dummy: DTTNEYIET3 dan QWERTY1234</p>
                     <div class="flex space-x-2">
                         <input type="text" id="bookingCodeInput" placeholder="Masukkan Kode Booking (Contoh: DTTNEYIET3)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
                         <button onclick="findBooking()" class="bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold px-4 py-2 rounded-lg shadow-lg hover:opacity-90">
@@ -789,6 +791,19 @@
                     </div>
                     <!-- Pesan Error (disembunyikan) -->
                     <p id="bookingNotFound" class="text-sm text-red-600 mt-2 hidden">Kode booking tidak ditemukan.</p>
+                </div>
+                
+                <!-- Card "Buat Pembayaran" -->
+                <div id="buatPembayaranCard" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6 text-center hidden">
+                    <!-- Label ini akan kita sembunyikan jika tidak ada nominal -->
+                    <p id="paymentActionLabel" class="text-sm font-medium text-gray-500">Jumlah Tagihan</p>
+                    <!-- Nominal ini akan kita isi secara dinamis -->
+                    <p id="paymentActionNominal" class="text-3xl font-bold text-[#bd292d] my-2"></p>
+                    <!-- Tombol ini akan kita isi secara dinamis -->
+                    <button id="paymentActionButton" onclick="alert('Fitur Pembayaran Manual Segera Hadir!')" 
+                            class="w-full text-white font-bold py-3 rounded-lg shadow-lg transition-all mt-4">
+                        <!-- Teks tombol diisi oleh JavaScript -->
+                    </button>
                 </div>
 
                 <!-- 2. Hasil Pencarian (disembunyikan) -->
@@ -805,6 +820,7 @@
                         <div class="space-y-2 text-sm mb-4">
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span id="bookingDetailNamaPaket" class="font-semibold text-gray-800"></span></p>
                             <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span id="bookingDetailNamaTravel" class="font-semibold text-gray-800"></span></p>
+                            <p><span class="font-medium text-gray-500 w-28 inline-block">Tanggal</span>: <span id="bookingDetailTanggalPaket" class="font-semibold text-gray-800"></span></p>
                         </div>
                          <!-- Info Pemesan (dari screenshot) -->
                         <div class="text-sm border-t border-gray-200 pt-3">
@@ -823,6 +839,14 @@
                              <div class="flex justify-between py-1">
                                 <span class="text-gray-500">Nomor Invoice</span>
                                 <span id="bookingDetailNomorInvoice" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Total Biaya Paket</span>
+                                <span id="bookingDetailPembayaranDP" class="font-semibold text-gray-800 text-right"></span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-500">Sisa Pembayaran</span>
+                                <span id="bookingDetailTotalTagihan" class="font-semibold text-gray-800 text-right"></span>
                             </div>
                         </div>
                     </div>
@@ -904,6 +928,7 @@
             // Ini akan diisi saat pengguna mengklik "Selanjutnya"
             namaPaket: "Umroh Multazam 1447 H 9 Hari",
             namaTravel: "Muhandis Wisata",
+            tanggalPaket: "22 Nov 2025 - 30 Nov 2025",
             hargaKamar: 31000000,
             pilihanKamar: "Quad",
             pilihanKantor: "Jakarta",
@@ -916,6 +941,7 @@
             "DTTNEYIET3": {
                 namaPaket: "Umroh Multazam 1447 H 9 Hari",
                 namaTravel: "Muhandis Wisata",
+                tanggalPaket: "22 Nov 2025 - 30 Nov 2025",
                 paymentStatus: "Belum Lunas", // Status dummy
                 statusClass: "bg-yellow-100 text-yellow-800", // Warna status
                 namaPemesan: "Achmad Ghozali",
@@ -924,18 +950,54 @@
                 jumlahPax: "2 Pax",
                 nomorInvoice: "DP04727412",
                 nomorVA: "6060491762239551",
-                pembayaranDP: "IDR 20,000,000",
-                totalTagihan: "IDR 68,000,000",
+                pembayaranDP: "IDR 68,000,000",
+                totalTagihan: "IDR 53,000,000",
                 daftarJamaah: [
                     { name: "Achmad Ghozali", phone: "085224131324" },
                     { name: "Noor Yasmin Ishmah", phone: "085224131324" }
                 ],
                 riwayatPembayaran: [
-                    { date: "01 Nov 2025", amount: "20,000,000", status: "Pending", method: "Virtual Account" },
-                    { date: "09 Nov 2025", amount: "15,000,000", status: "Gagal", method: "Virtual Account" }
-                ]
+                    { date: "01 Nov 2025", amount: "20,000,000", status: "gagal", method: "Virtual Account" },
+                    { date: "09 Nov 2025", amount: "15,000,000", status: "pending", method: "Virtual Account" }
+                ],
+                // 👇 DATA BARU UNTUK KARTU PEMBAYARAN 👇
+                paymentAction: {
+                    label: "Nominal Pembayaran",
+                    nominal: "15.000.000",
+                    buttonText: "Buat Pembayaran",
+                    buttonClass: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700'
+                }
+            },
+            // 👇 KODE BOOKING BARU (DUMMY) 👇
+            "QWERTY1234": {
+                namaPaket: "Umroh Signature 9 Hari",
+                namaTravel: "Baba Ali Travel",
+                tanggalPaket: "22 Nov 2025 - 30 Nov 2025",
+                paymentStatus: "Belum Lunas",
+                statusClass: "bg-green-100 text-green-800",
+                namaPemesan: "Budi Santoso",
+                kontakTelepon: "081987654321",
+                email: "budi@gmail.com",
+                jumlahPax: "1 Pax",
+                nomorInvoice: "INV/2025/11/10/001",
+                nomorVA: "80801234567890",
+                pembayaranDP: "IDR 33.500.000",
+                totalTagihan: "IDR 11.500.000",
+                daftarJamaah: [
+                    { name: "Budi Santoso", phone: "081987654321" }
+                ],
+                riwayatPembayaran: [
+                    { date: "01 Nov 2025", amount: "10.500.000", status: "Lunas", method: "Transfer Bank" },
+			{ date: "05 Nov 2025", amount: "11.500.000", status: "Lunas", method: "Virtual Account" }
+                ],
+                // 👇 DATA BARU UNTUK KARTU PEMBAYARAN 👇
+                paymentAction: {
+                    label: null, // Tidak ada label
+                    nominal: null, // Tidak ada nominal
+                    buttonText: "Buat Pembayaran Selanjutnya",
+                    buttonClass: 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
+                }
             }
-            // Anda bisa tambahkan kode booking lain di sini
         };
 
 function showPage(pageIdToShow) {
@@ -1092,6 +1154,7 @@ function showPage(pageIdToShow) {
             // Isi info paket dari data global
             document.getElementById('bookingNamaPaket').textContent = currentBookingDetails.namaPaket;
             document.getElementById('bookingNamaTravel').textContent = currentBookingDetails.namaTravel;
+            document.getElementById('bookingTanggalPaket').textContent = currentBookingDetails.tanggalPaket;
             document.getElementById('bookingKantorLayanan').textContent = currentBookingDetails.pilihanKantor;
             document.getElementById('bookingJenisKamar').textContent = currentBookingDetails.pilihanKamar;
 
@@ -1247,7 +1310,7 @@ function showPage(pageIdToShow) {
         // Fungsi untuk mengisi halaman Konfirmasi Pemesanan
         function renderConfirmPage() {
             // 1. Ambil data dari state
-            const { namaPaket, namaTravel, pilihanKantor, pilihanKamar, jumlahJamaah, discountAmount } = currentBookingDetails;
+            const { namaPaket, namaTravel, tanggalPaket, pilihanKantor, pilihanKamar, jumlahJamaah, discountAmount } = currentBookingDetails;
             const hargaKamar = currentBookingDetails.hargaKamar;
 
             // 2. Ambil data dari form pembeli
@@ -1273,6 +1336,7 @@ function showPage(pageIdToShow) {
             document.getElementById('confirmPaket').innerHTML = `
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Paket</span>: <span class="font-semibold text-gray-800">${namaPaket}</span></p>
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Nama Travel</span>: <span class="font-semibold text-gray-800">${namaTravel}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">Tanggal</span>: <span class="font-semibold text-gray-800">${tanggalPaket}</span></p>
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Kantor</span>: <span class="font-semibold text-gray-800">${pilihanKantor}</span></p>
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Kamar</span>: <span class="font-semibold text-gray-800">${pilihanKamar}</span></p>
             `;
@@ -1414,9 +1478,15 @@ function showPage(pageIdToShow) {
 
         // Fungsi untuk mencari Kode Booking
         function findBooking() {
-            const code = document.getElementById('bookingCodeInput').value.toUpperCase(); // Ambil kode & ubah ke huruf besar
+            const code = document.getElementById('bookingCodeInput').value.toUpperCase();
             const resultContainer = document.getElementById('bookingSearchResult');
             const notFoundMsg = document.getElementById('bookingNotFound');
+            
+            // Ambil elemen-elemen kartu pembayaran
+            const paymentCard = document.getElementById('buatPembayaranCard');
+            const paymentLabel = document.getElementById('paymentActionLabel');
+            const paymentNominal = document.getElementById('paymentActionNominal');
+            const paymentButton = document.getElementById('paymentActionButton');
 
             const booking = dummyBookingDatabase[code];
 
@@ -1425,15 +1495,60 @@ function showPage(pageIdToShow) {
                 resultContainer.classList.remove('hidden');
                 notFoundMsg.classList.add('hidden');
                 
+                // --- LOGIKA DINAMIS KARTU PEMBAYARAN ---
+                if (booking.paymentAction) {
+                    // Jika ada data paymentAction, tampilkan kartunya
+                    paymentCard.classList.remove('hidden');
+                    
+                    // Cek apakah ada nominal
+                    if (booking.paymentAction.nominal) {
+                        paymentLabel.textContent = booking.paymentAction.label || 'Jumlah Tagihan';
+                        paymentNominal.textContent = 'IDR ' + booking.paymentAction.nominal;
+                        paymentLabel.classList.remove('hidden');
+                        paymentNominal.classList.remove('hidden');
+                    } else {
+                        // Jika tidak ada nominal, sembunyikan
+                        paymentLabel.classList.add('hidden');
+                        paymentNominal.classList.add('hidden');
+                    }
+                    // Atur teks tombol
+                    paymentButton.innerHTML = booking.paymentAction.buttonText;
+
+                    // 1. Reset semua kelas warna yang mungkin
+                    paymentButton.classList.remove(
+                        'bg-gradient-to-r',
+                        'from-[#bd292d]', 'to-[#a32327]', 'hover:opacity-90', // Merah (Fallback)
+                        'from-blue-500', 'to-blue-600', 'hover:from-blue-600', 'hover:to-blue-700', // Biru
+                        'from-green-500', 'to-green-600', 'hover:from-green-600', 'hover:to-green-700' // Hijau
+                    );
+
+                    // 2. Tambahkan kelas warna baru dari database
+                    if (booking.paymentAction.buttonClass) {
+                        const classesToAdd = booking.paymentAction.buttonClass.split(' ');
+                        paymentButton.classList.add(...classesToAdd, 'bg-gradient-to-r'); // Tambahkan kelas baru
+                    } else {
+                        // Fallback ke warna merah jika 'buttonClass' tidak ada
+                        paymentButton.classList.add('bg-gradient-to-r', 'from-[#bd292d]', 'to-[#a32327]', 'hover:opacity-90');
+                    }
+
+                } else {
+                    // Jika tidak ada data paymentAction, sembunyikan kartunya
+                    paymentCard.classList.add('hidden');
+                }
+                // --- AKHIR LOGIKA DINAMIS ---
+
                 // 1. Isi Detail Paket & Status
                 document.getElementById('bookingPaymentStatus').textContent = booking.paymentStatus;
                 document.getElementById('bookingPaymentStatus').className = `px-3 py-1 rounded-full text-sm font-medium ${booking.statusClass}`;
                 document.getElementById('bookingDetailNamaPaket').textContent = booking.namaPaket;
                 document.getElementById('bookingDetailNamaTravel').textContent = booking.namaTravel;
+                document.getElementById('bookingDetailTanggalPaket').textContent = booking.tanggalPaket;
                 document.getElementById('bookingDetailNama').textContent = booking.namaPemesan;
                 document.getElementById('bookingDetailTelepon').textContent = booking.kontakTelepon;
                 document.getElementById('bookingDetailJumlahPax').textContent = booking.jumlahPax;
                 document.getElementById('bookingDetailNomorInvoice').textContent = booking.nomorInvoice;
+                document.getElementById('bookingDetailPembayaranDP').textContent = booking.pembayaranDP;
+                document.getElementById('bookingDetailTotalTagihan').textContent = booking.totalTagihan;
 
                 // 2. Isi Tab Riwayat Pembayaran
                 const riwayatContainer = document.getElementById('tabContentRiwayat');
@@ -1443,15 +1558,12 @@ function showPage(pageIdToShow) {
                             <p class="font-semibold text-gray-800">Pembayaran</p>
                             <p class="text-xs text-gray-500">${item.date} via ${item.method}</p>
                         </div>
-                        <!-- 👇 KODE BARU DIMULAI DI SINI 👇 -->
                         <div class="text-center">
                             <span class="font-bold text-gray-900">IDR ${item.amount}</span>
-                            <!-- Menampilkan Status Pembayaran -->
                             <span class="block text-xs font-medium px-2 py-0.5 rounded-full mt-1 ${getHistoryPaymentStatusClass(item.status)}">
                                 ${item.status || 'N/A'}
                             </span>
                         </div>
-                        <!-- 👆 KODE BARU SELESAI DI SINI 👆 -->
                     </div>
                 `).join('');
 
@@ -1471,6 +1583,7 @@ function showPage(pageIdToShow) {
                 // DATA TIDAK DITEMUKAN
                 resultContainer.classList.add('hidden');
                 notFoundMsg.classList.remove('hidden');
+                paymentCard.classList.add('hidden'); // Sembunyikan juga kartu pembayaran
             }
         }
 
