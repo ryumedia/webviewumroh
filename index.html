@@ -60,7 +60,7 @@
         </div>
 
         <!-- Landing Page Section (Halaman Sapaan) -->
-        <section id="landingSection" class="page-content pt-20 pb-20 px-4">
+        <section id="landingSection" class="page-content pt-20 pb-20 px-4 hidden">
             <div class="max-w-lg mx-auto">
                 
                 <!-- Info Promosi -->
@@ -116,7 +116,7 @@
         </section>
 
         <!-- Main Content Area (Scrollable) -->
-        <section id="homeSection" class="page-content pt-20 pb-20 px-4 hidden"> <!-- Adjusted padding for fixed header and bottom nav -->
+        <section id="homeSection" class="page-content pt-20 pb-20 px-4">
             <!-- Logo & Description Section -->
             <div class="text-center mb-6">
                 <div class="flex justify-center">
@@ -1005,12 +1005,15 @@ function showPage(pageIdToShow) {
             // --- LOGIKA HEADER DINAMIS ---
             const headerBackBtn = document.getElementById('headerBackBtn');
             
-            if (pageIdToShow === 'landingSection') {
+            if (pageIdToShow === 'homeSection') { // <-- PERUBAHAN DI SINI
+                // Di halaman home: Sembunyikan Tombol Back
                 headerBackBtn.classList.add('hidden');
             } else {
+                // Di semua halaman lain: Tampilkan Tombol Back
                 headerBackBtn.classList.remove('hidden');
 
-                let parentPage = 'landingSection'; // Default kembali ke landing
+                // Tentukan halaman "induk" untuk tombol back
+                let parentPage = 'homeSection'; // <-- PERUBAHAN DI SINI (Default kembali ke home)
                 
                 if (pageIdToShow === 'productDetailSection') {
                     parentPage = 'homeSection';
@@ -1020,18 +1023,17 @@ function showPage(pageIdToShow) {
                     parentPage = 'bookingSection';
                 } else if (pageIdToShow === 'paymentSection') {
                     parentPage = 'confirmSection';
-                // --- 👇 PERUBAHAN LOGIKA BACK BUTTON 👇 ---
                 } else if (pageIdToShow === 'caraPembayaranSection') { 
                     parentPage = 'paymentSection';
-                // --- 👆 AKHIR PERUBAHAN 👆 ---
                 } else if (pageIdToShow === 'riwayatSection' || pageIdToShow === 'searchSection') {
                     parentPage = 'homeSection';
-                } else if (pageIdToShow === 'homeSection') {
-                    parentPage = 'landingSection';
                 }
+                // Baris 'else if (pageIdToShow === 'homeSection')' sudah tidak diperlukan
                 
+                // Atur fungsi onclick tombol back secara dinamis
                 headerBackBtn.onclick = () => showPage(parentPage);
             }
+            // --- AKHIR LOGIKA HEADER DINAMIS ---
             
             // --- LOGIKA HALAMAN ---
             document.querySelectorAll('.page-content').forEach(page => {
@@ -1606,6 +1608,12 @@ function showPage(pageIdToShow) {
             activeBtn.classList.add('text-[#bd292d]', 'border-[#bd292d]');
             activeBtn.classList.remove('text-gray-500', 'border-transparent');
         }
+
+        // Panggil showPage('homeSection') saat halaman pertama kali dimuat
+        // untuk memastikan header dan footer di-setting dengan benar.
+        window.onload = () => {
+            showPage('homeSection');
+        };
 
     </script>
 
