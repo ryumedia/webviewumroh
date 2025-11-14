@@ -527,11 +527,22 @@
 
                     <!-- 3. Total Pembayaran -->
                     <div>
-                        <label class="block text-lg font-semibold text-gray-700 mb-3">Total Pembayaran</label>
+                        <!-- Label utama diubah menjadi "Total Pembayaran DP" -->
+                        <label class="block text-lg font-semibold text-gray-700 mb-3">Total Pembayaran DP</label>
                         <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center">
-                            <p class="text-sm text-blue-800">Jumlah yang harus dibayar</p>
+                            
+                            <!-- Bagian Total Harga Paket -->
+                            <p id="bookingFullPriceLabel" class="text-sm text-blue-800">Total Harga Paket</p>
+                            <p id="bookingFullPrice" class="text-lg font-bold text-blue-700 mt-1">IDR 0</p>
+                            <p id="bookingDiscountDisplay" class="text-sm font-medium text-green-600 mt-1 hidden"></p>
+                            
+                            <!-- Garis Pemisah -->
+                            <div class="my-3 border-t border-dashed border-blue-200"></div>
+
+                            <!-- Bagian DP (yang harus dibayar sekarang) -->
+                            <p class="text-sm font-bold text-blue-800">Jumlah DP (yang harus dibayar)</p>
                             <p id="bookingTotalPrice" class="text-3xl font-bold text-blue-900 mt-1">IDR 0</p>
-                            <p id="bookingDiscountDisplay" class="text-sm font-medium text-green-600 mt-1 hidden">
+
                         </div>
                     </div>
 
@@ -546,6 +557,10 @@
                              <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Nomor HP (WhatsApp)</label>
                                 <input type="tel" id="buyerPhone" placeholder="Contoh: 08123456789" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">NIK (Nomor KTP)</label>
+                                <input type="number" id="buyerNik" placeholder="16 digit NIK" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
                             </div>
                              <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -647,6 +662,7 @@
                     <div class="text-center bg-gray-50 p-4 rounded-lg border border-gray-200">
                         <p class="text-sm font-medium text-gray-500">KODE BOOKING</p>
                         <p id="paymentKodeBooking" class="text-3xl font-bold text-blue-600 tracking-wider">DTTNEYIET3</p>
+                        <p class="text-base font-bold text-gray-600">Harap disimpan baik baik kode booking ini</p>
                     </div>
 
                     <!-- 2. Info Pemesan -->
@@ -675,95 +691,19 @@
                     
                     <!-- 3. Info Pembayaran -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-                        <div class="flex justify-between items-center mb-3">
-                            <div>
-                                <p class="text-gray-500 text-sm">Nomor Virtual Account</p>
-                                <p id="paymentVA" class="text-xl font-bold text-[#bd292d]">6060491762239551</p>
-                            </div>
-                            <button onclick="copyToClipboard('6060491762239551')" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">Copy</button>
-                        </div>
-                        <div class="flex justify-between items-center">
+                        <!-- Mengubah 'flex justify-between' menjadi 'text-center' -->
+                        <div class="text-center">
                             <div>
                                 <p class="text-gray-500 text-sm">Pembayaran</p>
                                 <p id="paymentTotal" class="text-xl font-bold text-[#bd292d]">IDR 12,125,000</p>
                             </div>
-                            <button onclick="copyToClipboard('12125000')" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">Copy</button>
+                            <!-- Tombol copy sudah dihapus -->
                         </div>
                     </div>
 
                     <!-- 4. Total Tagihan -->
                     <div class="text-center mt-4">
                         <p class="text-sm text-gray-600"><i class="fas fa-info-circle mr-1"></i> Total Tagihan: <span id="paymentTotalTagihan" class="font-bold">IDR 48,500,000</span></p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Cara Pembayaran Section -->
-        <section id="caraPembayaranSection" class="page-content pt-20 pb-20 px-4 hidden bg-white">
-            <div class="max-w-lg mx-auto">
-                <!-- Header Halaman -->
-                <div class="flex items-center justify-between mb-8">
-                    <h2 class="text-xl font-bold text-gray-800">Cara Pembayaran</h2>
-                </div>
-                
-                <!-- Konten Halaman Cara Pembayaran -->
-                <div class="space-y-6">
-                    
-                    <!-- 1. Ringkasan Info Pembayaran -->
-                    <div class="bg-gray-50 rounded-xl shadow-sm border border-gray-100 p-4 space-y-3">
-                        
-                        <!-- Kode Booking -->
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-sm font-medium text-gray-500">Kode Booking</p>
-                                <p id="caraBayarKodeBooking" class="text-2xl font-bold text-gray-800"></p>
-                            </div>
-                            <!-- Tombol Copy Dummy -->
-                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
-                                <i class="fas fa-copy"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- Nomor VA -->
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-sm font-medium text-gray-500">Nomor Virtual Account</p>
-                                <p id="caraBayarVA" class="text-2xl font-bold text-[#bd292d]"></p>
-                            </div>
-                             <!-- Tombol Copy Dummy -->
-                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
-                                <i class="fas fa-copy"></i>
-                            </div>
-                        </div>
-
-                        <!-- Jumlah DP -->
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-sm font-medium text-gray-500">Jumlah DP (Down Payment)</p>
-                                <p id="caraBayarTotal" class="text-2xl font-bold text-[#bd292d]"></p>
-                            </div>
-                             <!-- Tombol Copy Dummy -->
-                            <div class="bg-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
-                                <i class="fas fa-copy"></i>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- 2. Tata Cara Pembayaran (Dummy) -->
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-                        <label class="block text-lg font-semibold text-gray-700 mb-3">Tata Cara Pembayaran</label>
-                        <ol class="list-decimal list-inside text-sm text-gray-600 space-y-2">
-                            <li>Buka aplikasi mobile banking atau ATM Anda.</li>
-                            <li>Pilih menu "Transfer" lalu "Virtual Account".</li>
-                            <li>Masukkan Nomor Virtual Account di atas.</li>
-                            <li>Pastikan nominal pembayaran sudah sesuai dengan Jumlah DP.</li>
-                            <li>Ikuti instruksi untuk menyelesaikan pembayaran.</li>
-                            <li>Simpan bukti transfer Anda.</li>
-                            <li>Pesanan Anda akan otomatis terkonfirmasi setelah pembayaran berhasil.</li>
-                        </ol>
                     </div>
 
                 </div>
@@ -906,18 +846,20 @@
 
         <!-- Payment Footer (Fixed) -->
         <div id="paymentFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
-            <button onclick="showPage('caraPembayaranSection')" 
+           <button onclick="submitPaymentAndGoToRiwayat()" 
                     class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
                 Bayar
             </button>
         </div>
 
-        <div id="tutupFooter" class="hidden fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white p-3 shadow-lg z-10 border-t border-gray-200">
-            <!-- Tombol ini akan memanggil fungsi yang sama dengan tombol 'Bayar' sebelumnya -->
-            <button onclick="submitPaymentAndGoToRiwayat()" 
-                    class="w-full bg-gradient-to-r from-[#bd292d] to-[#a32327] text-white font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition-opacity">
-                Tutup
-            </button>
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="hidden fixed inset-0 max-w-lg mx-auto bg-black bg-opacity-75 flex flex-col items-center justify-center z-50">
+            <!-- Ikon Spinner -->
+            <svg class="animate-spin h-12 w-12 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="text-white text-xl font-semibold">Memproses Transaksi...</p>
         </div>
 
     </div>
@@ -945,26 +887,25 @@
                 paymentStatus: "Belum Lunas", // Status dummy
                 statusClass: "bg-yellow-100 text-yellow-800", // Warna status
                 namaPemesan: "Achmad Ghozali",
-                kontakTelepon: "085224131324",
+                kontakTelepon: "xxxxxxxx1324",
                 email: "ghozaliizumi@gmail.com",
                 jumlahPax: "2 Pax",
                 nomorInvoice: "DP04727412",
                 nomorVA: "6060491762239551",
                 pembayaranDP: "IDR 68,000,000",
-                totalTagihan: "IDR 53,000,000",
+                totalTagihan: "IDR 48,000,000",
                 daftarJamaah: [
-                    { name: "Achmad Ghozali", phone: "085224131324" },
-                    { name: "Noor Yasmin Ishmah", phone: "085224131324" }
+                    { name: "Achmad Ghozali", phone: "xxxxxxxx1324" },
+                    { name: "Noor Yasmin Ishmah", phone: "xxxxxxxx4596" }
                 ],
                 riwayatPembayaran: [
-                    { date: "01 Nov 2025", amount: "20,000,000", status: "gagal", method: "Virtual Account" },
-                    { date: "09 Nov 2025", amount: "15,000,000", status: "pending", method: "Virtual Account" }
+                    { date: "01 Nov 2025", amount: "20,000,000", status: "lunas", method: "Virtual Account" },
                 ],
                 // 👇 DATA BARU UNTUK KARTU PEMBAYARAN 👇
                 paymentAction: {
                     label: "Nominal Pembayaran",
-                    nominal: "15.000.000",
-                    buttonText: "Buat Pembayaran",
+                    nominal: "48.000.000",
+                    buttonText: "Bayar Pelunasan",
                     buttonClass: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700'
                 }
             },
@@ -973,30 +914,23 @@
                 namaPaket: "Umroh Signature 9 Hari",
                 namaTravel: "Baba Ali Travel",
                 tanggalPaket: "22 Nov 2025 - 30 Nov 2025",
-                paymentStatus: "Belum Lunas",
+                paymentStatus: "Lunas",
                 statusClass: "bg-green-100 text-green-800",
                 namaPemesan: "Budi Santoso",
-                kontakTelepon: "081987654321",
+                kontakTelepon: "xxxxxxxx321",
                 email: "budi@gmail.com",
                 jumlahPax: "1 Pax",
                 nomorInvoice: "INV/2025/11/10/001",
                 nomorVA: "80801234567890",
                 pembayaranDP: "IDR 33.500.000",
-                totalTagihan: "IDR 11.500.000",
+                totalTagihan: "IDR 0",
                 daftarJamaah: [
-                    { name: "Budi Santoso", phone: "081987654321" }
+                    { name: "Budi Santoso", phone: "xxxxxxxx4321" }
                 ],
                 riwayatPembayaran: [
-                    { date: "01 Nov 2025", amount: "10.500.000", status: "Lunas", method: "Transfer Bank" },
-			{ date: "05 Nov 2025", amount: "11.500.000", status: "Lunas", method: "Virtual Account" }
+                    { date: "01 Nov 2025", amount: "10.000.000", status: "Lunas", method: "Transfer Bank" },
+			{ date: "05 Nov 2025", amount: "23.500.000", status: "Lunas", method: "Virtual Account" }
                 ],
-                // 👇 DATA BARU UNTUK KARTU PEMBAYARAN 👇
-                paymentAction: {
-                    label: null, // Tidak ada label
-                    nominal: null, // Tidak ada nominal
-                    buttonText: "Buat Pembayaran Selanjutnya",
-                    buttonClass: 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
-                }
             }
         };
 
@@ -1023,8 +957,6 @@ function showPage(pageIdToShow) {
                     parentPage = 'bookingSection';
                 } else if (pageIdToShow === 'paymentSection') {
                     parentPage = 'confirmSection';
-                } else if (pageIdToShow === 'caraPembayaranSection') { 
-                    parentPage = 'paymentSection';
                 } else if (pageIdToShow === 'riwayatSection' || pageIdToShow === 'searchSection') {
                     parentPage = 'homeSection';
                 }
@@ -1048,13 +980,11 @@ function showPage(pageIdToShow) {
             const mainFooter = document.getElementById('mainFooter');
             const bookingFooter = document.getElementById('bookingFooter');
             const paymentFooter = document.getElementById('paymentFooter');
-            const tutupFooter = document.getElementById('tutupFooter'); // <-- Variabel baru
             const nextButton = document.getElementById('nextButton');
 
             // Sembunyikan semua footer kontekstual terlebih dahulu
             bookingFooter.classList.add('hidden');
             paymentFooter.classList.add('hidden');
-            tutupFooter.classList.add('hidden'); // <-- Sembunyikan footer baru
             mainFooter.classList.add('hidden');
 
 
@@ -1112,13 +1042,7 @@ function showPage(pageIdToShow) {
                 } else if (pageIdToShow === 'paymentSection') {
                     paymentFooter.classList.remove('hidden');
                     renderPaymentPage();
-                
-                // --- 👇 BLOK BARU UNTUK HALAMAN CARA BAYAR 👇 ---
-                } else if (pageIdToShow === 'caraPembayaranSection') {
-                    tutupFooter.classList.remove('hidden');
-                    renderCaraPembayaranPage();
                 }
-                // --- 👆 AKHIR BLOK BARU 👆 ---
 
             } else {
                 if (pageIdToShow === 'landingSection') {
@@ -1191,63 +1115,90 @@ function showPage(pageIdToShow) {
             updateTotalPrice();
         }
 
-        // Fungsi untuk mengupdate total harga (Versi baru dengan Diskon)
+        // Fungsi untuk mengupdate total harga (Versi baru dengan Diskon & DP)
         function updateTotalPrice() {
             // Definisikan kode referal dan diskonnya
             const DUMMY_REFERAL_CODE = "UHAJJ123";
             const DISCOUNT_PER_JAMAAH = 500000;
+            // Definisikan DP per jamaah
+            const DUMMY_DP_PER_JAMAAH = 10000000;
 
             // Ambil elemen-elemen yang relevan
-            const totalPriceEl = document.getElementById('bookingTotalPrice');
+            const totalPriceEl = document.getElementById('bookingTotalPrice'); // Ini akan jadi Total DP
             const discountEl = document.getElementById('bookingDiscountDisplay');
             const referalInput = document.getElementById('buyerReferal');
-
+            const fullPriceEl = document.getElementById('bookingFullPrice'); // Elemen baru
+            
             // Ambil data dari state
             const count = currentBookingDetails.jumlahJamaah;
             const hargaKamar = currentBookingDetails.hargaKamar;
             const referalCode = referalInput ? referalInput.value.trim().toUpperCase() : "";
 
             // Hitung harga
-            let subtotal = hargaKamar * count;
+            let subtotal = hargaKamar * count; // Harga penuh sebelum diskon
             let discountAmount = 0;
 
             // Cek apakah kode referal valid
             if (referalCode === DUMMY_REFERAL_CODE) {
                 discountAmount = DISCOUNT_PER_JAMAAH * count;
-                referalInput.classList.remove('border-red-500'); // Hapus error (jika ada)
-                referalInput.classList.add('border-green-500'); // Tampilkan sukses
+                referalInput.classList.remove('border-red-500');
+                referalInput.classList.add('border-green-500');
             } else if (referalCode !== "") {
-                referalInput.classList.add('border-red-500'); // Tampilkan error
+                referalInput.classList.add('border-red-500');
                 referalInput.classList.remove('border-green-500');
             } else {
-                 referalInput.classList.remove('border-red-500', 'border-green-500'); // Reset
+                 referalInput.classList.remove('border-red-500', 'border-green-500');
             }
             
             // Hitung total akhir
-            const finalTotal = subtotal - discountAmount;
+            const finalFullTotal = subtotal - discountAmount;
+            // Hitung total DP
+            const totalDP = DUMMY_DP_PER_JAMAAH * count;
             
             // Simpan diskon ke state global
             currentBookingDetails.discountAmount = discountAmount;
 
             // Update tampilan HTML
-            totalPriceEl.textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(finalTotal);
             
-            if (discountAmount > 0) {
-                discountEl.textContent = `Diskon Referal: - IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}`;
-                discountEl.classList.remove('hidden');
-            } else {
-                discountEl.classList.add('hidden');
+            // 1. Tampilkan Total DP (yang harus dibayar sekarang)
+            if (totalPriceEl) {
+                // Tampilkan totalDP di elemen bawah
+                totalPriceEl.textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(totalDP);
+            }
+            
+            // 2. Tampilkan Diskon
+            if (discountEl) {
+                if (discountAmount > 0) {
+                    discountEl.textContent = `Diskon Referal: - IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}`;
+                    discountEl.classList.remove('hidden');
+                } else {
+                    discountEl.classList.add('hidden');
+                }
+            }
+
+            // 3. Tampilkan Total Harga Paket (setelah diskon)
+            if (fullPriceEl) {
+                // Tampilkan finalFullTotal di elemen atas
+                // Jika ada diskon, tampilkan harga asli yang dicoret
+                if (discountAmount > 0) {
+                    fullPriceEl.innerHTML = `<span class="line-through text-red-600">IDR ${new Intl.NumberFormat('id-ID').format(subtotal)}</span> IDR ${new Intl.NumberFormat('id-ID').format(finalFullTotal)}`;
+                } else {
+                    fullPriceEl.textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(finalFullTotal);
+                }
             }
         }
 
         // Fungsi untuk auto-fill data pembeli ke jamaah 1
+       // Fungsi untuk auto-fill data pembeli ke jamaah 1
         function toggleBuyerAsJamaah() {
             const isChecked = document.getElementById('buyerAsJamaah').checked;
             const buyerName = document.getElementById('buyerName').value;
             const buyerPhone = document.getElementById('buyerPhone').value;
+            const buyerNik = document.getElementById('buyerNik').value; // Ambil NIK juga
             
             const jamaahName1 = document.getElementById('jamaah_name_0');
             const jamaahPhone1 = document.getElementById('jamaah_phone_0');
+            const jamaahNik1 = document.getElementById('jamaah_nik_0'); // Ambil elemen NIK jamaah
             
             if (isChecked) {
                 if (jamaahName1) {
@@ -1260,6 +1211,11 @@ function showPage(pageIdToShow) {
                     jamaahPhone1.readOnly = true;
                     jamaahPhone1.classList.add('bg-gray-100');
                 }
+                if (jamaahNik1) { // <-- Tambahkan logika untuk NIK
+                    jamaahNik1.value = buyerNik;
+                    jamaahNik1.readOnly = true;
+                    jamaahNik1.classList.add('bg-gray-100');
+                }
             } else {
                 if (jamaahName1) {
                     jamaahName1.value = '';
@@ -1270,6 +1226,11 @@ function showPage(pageIdToShow) {
                     jamaahPhone1.value = '';
                     jamaahPhone1.readOnly = false;
                     jamaahPhone1.classList.remove('bg-gray-100');
+                }
+                 if (jamaahNik1) { // <-- Tambahkan logika untuk NIK
+                    jamaahNik1.value = '';
+                    jamaahNik1.readOnly = false;
+                    jamaahNik1.classList.remove('bg-gray-100');
                 }
             }
         }
@@ -1292,6 +1253,10 @@ function showPage(pageIdToShow) {
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Nomor HP Jamaah</label>
                                 <input type="tel" id="jamaah_phone_${i}" placeholder="Nomor HP aktif" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">NIK Jamaah (Nomor KTP)</label>
+                                <input type="number" id="jamaah_nik_${i}" placeholder="16 digit NIK" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bd292d]">
                             </div>
                         </div>
                     </div>
@@ -1318,6 +1283,16 @@ function showPage(pageIdToShow) {
             // 2. Ambil data dari form pembeli
             const buyerName = document.getElementById('buyerName').value;
             const buyerPhone = document.getElementById('buyerPhone').value;
+                // Buat versi nomor HP yang dimasker
+                let maskedPhone = "";
+                if (buyerPhone && buyerPhone.length > 4) {
+                    const lastFour = buyerPhone.slice(-4); // Ambil 4 digit terakhir
+                    const maskLength = buyerPhone.length - 4; // Hitung sisa panjangnya
+                    maskedPhone = "x".repeat(maskLength) + lastFour; // Ganti sisanya dengan 'x'
+                } else if (buyerPhone) {
+                    // Jika nomor terlalu pendek (misal: 123), mask semua
+                    maskedPhone = "x".repeat(buyerPhone.length);
+                }
             const buyerEmail = document.getElementById('buyerEmail').value;
             const buyerReferal = document.getElementById('buyerReferal').value;
 
@@ -1326,13 +1301,30 @@ function showPage(pageIdToShow) {
             for (let i = 0; i < jumlahJamaah; i++) {
                 const jamaahName = document.getElementById(`jamaah_name_${i}`).value || 'Belum diisi';
                 const jamaahPhone = document.getElementById(`jamaah_phone_${i}`).value || 'Belum diisi';
-                jamaahListHTML += `<li class="mb-1"><span class="font-semibold">${jamaahName}</span> (${jamaahPhone})</li>`;
+
+                // --- KODE BARU DIMULAI DI SINI ---
+                // Masking nomor HP jamaah
+                let maskedJamaahPhone = "";
+                if (jamaahPhone && jamaahPhone.length > 4) {
+                    const lastFour = jamaahPhone.slice(-4); // Ambil 4 digit terakhir
+                    const maskLength = jamaahPhone.length - 4; // Hitung sisa panjangnya
+                    maskedJamaahPhone = "x".repeat(maskLength) + lastFour; // Ganti sisanya dengan 'x'
+                } else if (jamaahPhone) {
+                    maskedJamaahPhone = "x".repeat(jamaahPhone.length);
+                }
+                // --- KODE BARU SELESAI DI SINI ---
+
+                // Gunakan maskedJamaahPhone di sini
+                jamaahListHTML += `<li class="mb-1"><span class="font-semibold">${jamaahName}</span> (${maskedJamaahPhone})</li>`;
             }
             jamaahListHTML += '</ul>';
 
             // 4. Hitung harga
             const subtotal = hargaKamar * jumlahJamaah;
             const finalTotal = subtotal - discountAmount;
+            // Hitung DP
+            const DUMMY_DP_PER_JAMAAH = 10000000;
+            const totalDP = DUMMY_DP_PER_JAMAAH * jumlahJamaah;
 
             // 5. Isi HTML ke halaman konfirmasi
             document.getElementById('confirmPaket').innerHTML = `
@@ -1345,7 +1337,7 @@ function showPage(pageIdToShow) {
             
             document.getElementById('confirmPembeli').innerHTML = `
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Nama</span>: <span class="font-semibold text-gray-800">${buyerName}</span></p>
-                <p><span class="font-medium text-gray-500 w-28 inline-block">No. HP</span>: <span class="font-semibold text-gray-800">${buyerPhone}</span></p>
+                <p><span class="font-medium text-gray-500 w-28 inline-block">No. HP</span>: <span class="font-semibold text-gray-800">${maskedPhone}</span></p>
                 <p><span class="font-medium text-gray-500 w-28 inline-block">Email</span>: <span class="font-semibold text-gray-800">${buyerEmail}</span></p>
                 ${buyerReferal ? `<p><span class="font-medium text-gray-500 w-28 inline-block">Referal</span>: <span class="font-semibold text-gray-800">${buyerReferal}</span></p>` : ''}
             `;
@@ -1353,9 +1345,22 @@ function showPage(pageIdToShow) {
             document.getElementById('confirmJamaah').innerHTML = jamaahListHTML;
 
             document.getElementById('confirmTotal').innerHTML = `
-                <p><span class="font-medium text-gray-500 w-28 inline-block">Subtotal</span>: <span class="font-semibold text-gray-800">IDR ${new Intl.NumberFormat('id-ID').format(subtotal)}</span></p>
-                ${discountAmount > 0 ? `<p><span class="font-medium text-gray-500 w-28 inline-block">Diskon</span>: <span class="font-semibold text-green-600">- IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}</span></p>` : ''}
-                <p class="border-t border-gray-300 pt-2 mt-2"><span class="font-bold text-gray-600 w-28 inline-block">Total Bayar</span>: <span class="font-bold text-[#bd292d] text-lg">IDR ${new Intl.NumberFormat('id-ID').format(finalTotal)}</span></p>
+                <!-- Total Harga Paket (Setelah diskon) -->
+                <p>
+                    <span class="font-medium text-gray-500 w-28 inline-block">Total Harga Paket</span>: 
+                    <!-- Tampilkan harga asli dicoret jika ada diskon -->
+                    ${discountAmount > 0 ? `<span class="line-through text-red-600 text-sm">IDR ${new Intl.NumberFormat('id-ID').format(subtotal)}</span>` : ''}
+                    <span class="font-semibold text-gray-800">IDR ${new Intl.NumberFormat('id-ID').format(finalTotal)}</span>
+                </p>
+                
+                <!-- Tampilkan baris diskon jika ada -->
+                ${discountAmount > 0 ? `<p><span class="font-medium text-gray-500 w-28 inline-block">Diskon Referal</span>: <span class="font-semibold text-green-600">- IDR ${new Intl.NumberFormat('id-ID').format(discountAmount)}</span></p>` : ''}
+                
+                <!-- Pembayaran DP (yang harus dibayar) -->
+                <p class="border-t border-gray-300 pt-2 mt-2">
+                    <span class="font-bold text-gray-600 w-28 inline-block">Pembayaran DP</span>: 
+                    <span class="font-bold text-[#bd292d] text-lg">IDR ${new Intl.NumberFormat('id-ID').format(totalDP)}</span>
+                </p>
             `;
             
             // 6. Reset checkbox
@@ -1382,15 +1387,27 @@ function showPage(pageIdToShow) {
             // --- KODE BARU SELESAI DI SINI ---
             
             // Isi data pemesan dari form sebelumnya
+           const buyerPhoneRaw = document.getElementById('buyerPhone').value || 'Belum diisi';
+
+            // --- KODE BARU: Logika Masking Nomor HP ---
+            let maskedPhone = "";
+            if (buyerPhoneRaw && buyerPhoneRaw.length > 4) {
+                const lastFour = buyerPhoneRaw.slice(-4); // Ambil 4 digit terakhir
+                const maskLength = buyerPhoneRaw.length - 4; // Hitung sisa panjangnya
+                maskedPhone = "x".repeat(maskLength) + lastFour; // Ganti sisanya dengan 'x'
+            } else if (buyerPhoneRaw) {
+                maskedPhone = "x".repeat(buyerPhoneRaw.length);
+            }
+            // --- AKHIR KODE BARU ---
+
             document.getElementById('paymentNama').textContent = document.getElementById('buyerName').value || 'Belum diisi';
-            document.getElementById('paymentTelepon').textContent = document.getElementById('buyerPhone').value || 'Belum diisi';
+            document.getElementById('paymentTelepon').textContent = maskedPhone; // <-- PERUBAHAN DI SINI
             document.getElementById('paymentEmail').textContent = document.getElementById('buyerEmail').value || 'Belum diisi';
             document.getElementById('paymentJumlahPax').textContent = `${jumlahJamaah} Pax`;
 
             // Isi data pembayaran
             document.getElementById('paymentKodeBooking').textContent = kodeBooking;
             document.getElementById('paymentNomorInvoice').textContent = nomorInvoice;
-            document.getElementById('paymentVA').textContent = nomorVA;
             
             // --- PERUBAHAN TAMPILAN HARGA ---
             // Tampilkan jumlah DP sebagai "Pembayaran"
@@ -1398,24 +1415,6 @@ function showPage(pageIdToShow) {
             // Tampilkan total tagihan penuh di bagian bawah
             document.getElementById('paymentTotalTagihan').textContent = 'IDR ' + new Intl.NumberFormat('id-ID').format(totalTagihan);
             // --- AKHIR PERUBAHAN ---
-            
-            // Update tombol copy
-            document.querySelector('button[onclick*="606049"]').onclick = () => copyToClipboard(nomorVA);
-            // Update tombol copy agar menyalin jumlah DP
-            document.querySelector('button[onclick*="12125000"]').onclick = () => copyToClipboard(totalDP.toString());
-        }
-
-        // Fungsi untuk mengisi halaman Cara Pembayaran
-        function renderCaraPembayaranPage() {
-            // (Kita ambil data dari elemen di halaman 'paymentSection' yang baru saja diisi)
-            const kodeBooking = document.getElementById('paymentKodeBooking').textContent;
-            const nomorVA = document.getElementById('paymentVA').textContent;
-            const totalDP = document.getElementById('paymentTotal').textContent;
-
-            // Isi ke halaman "Cara Pembayaran"
-            document.getElementById('caraBayarKodeBooking').textContent = kodeBooking;
-            document.getElementById('caraBayarVA').textContent = nomorVA;
-            document.getElementById('caraBayarTotal').textContent = totalDP;
         }
 
         // Fungsi untuk menyalin teks ke clipboard
@@ -1437,28 +1436,43 @@ function showPage(pageIdToShow) {
             document.body.removeChild(el);
         }
 
+        // Fungsi untuk "membayar" dan langsung mengarahkan ke riwayat (VERSI BARU DENGAN LOADING)
         function submitPaymentAndGoToRiwayat() {
-            // (Nanti di sini Anda bisa tambahkan logika API pembayaran yang sesungguhnya)
-            // Untuk saat ini, kita anggap pembayaran berhasil.
-            alert('Simulasi pembayaran berhasil!');
+            const overlay = document.getElementById('loadingOverlay');
+            const paymentButton = document.querySelector('#paymentFooter button'); // Ambil tombol Bayar
 
-            // Ambil kode booking yang sedang ditampilkan di halaman pembayaran
-            const activeBookingCode = document.getElementById('paymentKodeBooking').textContent;
-            
-            // 1. Pindah ke halaman riwayat
-            showPage('riwayatSection');
-            
-            // 2. Isi otomatis kotak pencarian di halaman riwayat
-            const bookingInput = document.getElementById('bookingCodeInput');
-            if (bookingInput) {
-                bookingInput.value = activeBookingCode;
-            }
-            
-            // 3. Picu pencarian secara otomatis
-            // Kita beri sedikit jeda (timeout) agar halaman sempat berganti
+            // 1. Tampilkan overlay dan nonaktifkan tombol
+            if (overlay) overlay.classList.remove('hidden');
+            if (paymentButton) paymentButton.disabled = true;
+
+            // 2. Mulai simulasi 10 detik
             setTimeout(() => {
-                findBooking();
-            }, 100); // jeda 100ms
+                // 3. Setelah 10 detik, sembunyikan overlay dan aktifkan kembali tombol
+                if (overlay) overlay.classList.add('hidden');
+                if (paymentButton) paymentButton.disabled = false;
+
+                // 4. Jalankan logika yang sudah ada sebelumnya:
+                alert('Simulasi pembayaran berhasil!');
+
+                // Ambil kode booking yang sedang ditampilkan di halaman pembayaran
+                const activeBookingCode = document.getElementById('paymentKodeBooking').textContent;
+                
+                // 5. Pindah ke halaman riwayat
+                showPage('riwayatSection');
+                
+                // 6. Isi otomatis kotak pencarian di halaman riwayat
+                const bookingInput = document.getElementById('bookingCodeInput');
+                if (bookingInput) {
+                    bookingInput.value = activeBookingCode;
+                }
+                
+                // 7. Picu pencarian secara otomatis
+                // Kita beri sedikit jeda (timeout) agar halaman sempat berganti
+                setTimeout(() => {
+                    findBooking();
+                }, 100); // jeda 100ms
+                
+            }, 4000); // 10000 milidetik = 10 detik
         }
 
         function getHistoryPaymentStatusClass(status) {
